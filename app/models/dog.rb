@@ -1,3 +1,4 @@
 class Dog < ApplicationRecord
-  belongs_to :user_id
+  belongs_to :user
+  has_many :dogs_parks
 end
