@@ -6,6 +6,6 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, length: { in: 3..20 }
-  has_many :dogs
-  has_one_attached :photo
+  has_many :dogs, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
 end

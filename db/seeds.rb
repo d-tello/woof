@@ -12,6 +12,10 @@ def delete_old_seeds
   puts '=> Deleted all dogs'
   User.destroy_all
   puts '=> Deleted all users'
+  puts 'Deleting old sniffs...'
+  Sniff.destroy_all
+  puts 'Deleting old chatrooms...'
+  Chatroom.destroy_all
 end
 
 def create_user(i)
@@ -19,27 +23,44 @@ def create_user(i)
   user = User.create(
     email: "user#{i}@woof.com",
     password: '123456',
-    username: Faker::Internet.username,
-    )
+    username: Faker::Internet.username
+  )
   puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
 end
 
 def create_dog
   puts 'Creating dog...'
-    dog = Dog.create(
-      name: Faker::Creature::Dog.name,
-      age: rand(1..15),
-      breed: Faker::Creature::Dog.breed,
-      bio: Faker::Creature::Dog.meme_phrase,
-      user: User.last
-    )
+  dog = Dog.create(
+    name: Faker::Creature::Dog.name,
+    age: rand(1..15),
+    breed: Faker::Creature::Dog.breed,
+    bio: Faker::Creature::Dog.meme_phrase,
+    user: User.last
+  )
   puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username}"
 end
 
-puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱"
+def create_sniff
+  puts 'Creating sniff...'
+  sniff = Sniff.create(
+    sniffer: Dog.first,
+    sniffed: Dog.last
+  )
+  puts "=> Created Sniff between #{sniff.sniffer.name} and #{sniff.sniffed.name}"
+end
+
+def create_chatroom
+  chatroom = Chatroom.new
+  chatroom.sniff = Sniff.first
+  chatroom.save
+end
+
+puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
 delete_old_seeds
 (1..10).to_a.each do |i|
   create_user(i)
   create_dog
 end
-puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱"
+create_sniff
+create_chatroom
+puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
