@@ -6,12 +6,35 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+PARKSBERLIN = [
+  'Wildenbruchplatz',
+  'Goerlizer Park',
+  'Hasenheide',
+  'Tempelhofer Feld'
+]
+
 def delete_old_seeds
   puts 'Deleting old seeds...'
+  DogsPark.destroy_all
+  puts '=> Deleted all dogparks'
+  Park.destroy_all
+  puts '=> Deleted all parks'
   Dog.destroy_all
   puts '=> Deleted all dogs'
   User.destroy_all
   puts '=> Deleted all users'
+end
+
+def create_parks
+  puts 'Creating park...'
+  PARKSBERLIN.each do |park|
+    new_park = Park.create(
+      name: park,
+      address: "#{park} Berlin"
+    )
+  puts "=> 🏞 Created Park #{new_park.name}"
+  end
 end
 
 def create_user(i)
@@ -21,7 +44,7 @@ def create_user(i)
     password: '123456',
     username: Faker::Internet.username,
     )
-  puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
+  puts "=> 🧔 sCreated #{user.username}, email: #{user.email}, password: #{user.password}"
 end
 
 def create_dog
@@ -33,11 +56,19 @@ def create_dog
       bio: Faker::Creature::Dog.meme_phrase,
       user: User.last
     )
-  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username}"
+
+    DogsPark.create(
+      dog: dog,
+      park: Park.all.sample
+    )
+  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username} with park 🏞 #{dog.parks.first.name}"
 end
+
+
 
 puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱"
 delete_old_seeds
+create_parks
 (1..10).to_a.each do |i|
   create_user(i)
   create_dog
