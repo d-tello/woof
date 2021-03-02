@@ -3,7 +3,7 @@
 
 <p>Email: <%= @user.email %></p>
 <p>Username: <%= @user.username %></p>
-<p>Dogs: <% @user.dogs.each do |dog|  %>
+<p>Dogs: <% @dogs.each do |dog|  %>
   <ul>
     <li>Name: <%= dog.name %></li>
     <li>Breed: <%= dog.breed %></li>
@@ -14,4 +14,3 @@
 </p>
 
 <%= link_to "Edit your profile", edit_user_registration_path  %>
-
