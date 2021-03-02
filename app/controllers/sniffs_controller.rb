@@ -1,0 +1,3 @@
+class SniffsController < ApplicationController
+
+end
