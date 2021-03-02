@@ -7,25 +7,43 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
-
-
-
-def create_users
-  puts 'Creating users...'
-  user = User.create(
-    email: 'user@woof.com',
-    password: '123456',
-    username: 'donny',
-    )
-  puts "Created #{user.first_name}, email: #{user.email}, password: #{user.password}"
-
-  user = User.create(
-    email: 'admin@woof.com',
-    password: '123456',
-    username: 'admin'
-    )
-  puts "Created #{user.first_name}, email: #{user.email}, password: #{user.password}"
+def delete_old_seeds
+  puts 'Deleting old seeds...'
+  Dog.destroy_all
+  puts '=> Deleted all dogs'
+  User.destroy_all
+  puts '=> Deleted all users'
 end
 
-puts "Finished!"
+def create_user(i)
+  puts 'Creating user...'
+  user = User.create(
+    email: "user#{i}@woof.com",
+    password: '123456',
+    username: Faker::Internet.username,
+    )
+  puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
+end
+
+def create_dog
+  puts 'Creating dog...'
+    dog = Dog.create(
+      name: Faker::Creature::Dog.name,
+      age: rand(1..15),
+      breed: Faker::Creature::Dog.breed,
+      bio: Faker::Creature::Dog.meme_phrase,
+      user: User.last
+    )
+  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username}"
+end
+
+
+
+puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱"
+delete_old_seeds
+(1..10).to_a.each do |i|
+  create_user(i)
+  create_dog
+end
+puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱"
+
