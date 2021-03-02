@@ -16,6 +16,8 @@ PARKSBERLIN = [
 
 def delete_old_seeds
   puts 'Deleting old seeds...'
+  DogsPark.destroy_all
+  puts '=> Deleted all dogparks'
   Park.destroy_all
   puts '=> Deleted all parks'
   Dog.destroy_all
@@ -42,7 +44,7 @@ def create_user(i)
     password: '123456',
     username: Faker::Internet.username,
     )
-  puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
+  puts "=> 🧔 sCreated #{user.username}, email: #{user.email}, password: #{user.password}"
 end
 
 def create_dog
@@ -54,7 +56,12 @@ def create_dog
       bio: Faker::Creature::Dog.meme_phrase,
       user: User.last
     )
-  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username}"
+
+    DogsPark.create(
+      dog: dog,
+      park: Park.all.sample
+    )
+  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username} with park 🏞 #{dog.parks.first.name}"
 end
 
 
