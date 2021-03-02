@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
 # Use postgresql as the database for Active Record
@@ -29,6 +30,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

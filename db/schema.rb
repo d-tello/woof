@@ -9,18 +9,16 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2021_03_02_105115) do
-
+ActiveRecord::Schema.define(version: 2021_03_02_111603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.bigint "sniffs_id", null: false
+    t.bigint "sniff_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sniffs_id"], name: "index_chatrooms_on_sniffs_id"
+    t.index ["sniff_id"], name: "index_chatrooms_on_sniff_id"
   end
 
   create_table "dogs", force: :cascade do |t|
@@ -56,6 +54,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_105115) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "sniffs", force: :cascade do |t|
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_105115) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "chatrooms", "sniffs", column: "sniffs_id"
+  add_foreign_key "chatrooms", "sniffs"
   add_foreign_key "dogs", "users"
   add_foreign_key "dogs_parks", "parks"
   add_foreign_key "dogs_parks", "users"
