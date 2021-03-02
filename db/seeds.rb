@@ -6,8 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+PARKSBERLIN = [
+  'Wildenbruchplatz',
+  'Goerlizer Park',
+  'Hasenheide',
+  'Tempelhofer Feld'
+]
+
 def delete_old_seeds
   puts 'Deleting old seeds...'
+  DogsPark.destroy_all
+  puts '=> Deleted all dogparks'
+  Park.destroy_all
+  puts '=> Deleted all parks'
   Dog.destroy_all
   puts '=> Deleted all dogs'
   User.destroy_all
@@ -18,6 +30,17 @@ def delete_old_seeds
   Chatroom.destroy_all
 end
 
+def create_parks
+  puts 'Creating park...'
+  PARKSBERLIN.each do |park|
+    new_park = Park.create(
+      name: park,
+      address: "#{park} Berlin"
+    )
+  puts "=> 🏞 Created Park #{new_park.name}"
+  end
+end
+
 def create_user(i)
   puts 'Creating user...'
   user = User.create(
@@ -26,10 +49,13 @@ def create_user(i)
     username: Faker::Internet.username
   )
   puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
+
+
 end
 
 def create_dog
   puts 'Creating dog...'
+
   dog = Dog.create(
     name: Faker::Creature::Dog.name,
     age: rand(1..15),
@@ -57,6 +83,7 @@ end
 
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
 delete_old_seeds
+create_parks
 (1..10).to_a.each do |i|
   create_user(i)
   create_dog
