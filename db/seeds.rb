@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
+
+
+def create_users
+  puts 'Creating users...'
+  user = User.create(
+    email: 'user@woof.com',
+    password: '123456',
+    username: 'donny',
+    )
+  puts "Created #{user.first_name}, email: #{user.email}, password: #{user.password}"
+
+  user = User.create(
+    email: 'admin@woof.com',
+    password: '123456',
+    username: 'admin'
+    )
+  puts "Created #{user.first_name}, email: #{user.email}, password: #{user.password}"
+end
+
+puts "Finished!"
