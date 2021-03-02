@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 def delete_old_seeds
   puts 'Deleting old seeds...'
   Dog.destroy_all
@@ -37,8 +36,6 @@ def create_dog
   puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username}"
 end
 
-
-
 puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱"
 delete_old_seeds
 (1..10).to_a.each do |i|
@@ -46,4 +43,3 @@ delete_old_seeds
   create_dog
 end
 puts "🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱"
-
