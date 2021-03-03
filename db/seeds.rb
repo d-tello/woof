@@ -66,7 +66,7 @@ end
 def create_dogs_park
   dogs_park = DogsPark.new
   dogs_park.dog = Dog.first
-  dogs_park.parks = Park.all
+  dogs_park.park = Park.first
   dogs_park.save
   puts '=> Create a dog park'
 end
