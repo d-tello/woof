@@ -10,4 +10,6 @@ class Dog < ApplicationRecord
   validates :breed, presence: true
   validates :age, presence: true, numericality: true
   validates :bio, presence: true
+
+  has_many_attached :photos, dependent: :destroy
 end
