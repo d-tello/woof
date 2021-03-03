@@ -3,7 +3,7 @@
 
   <div class="parks">
     <% @parks.each do |park| %>
-      <div class="parks-park">
+      <div class="parks-park mb-4">
         <h2><%= park.name %></h2>
         <% park.dogs.each do |dog| %>
           <%= render 'components/card_dog', dog: dog %>
