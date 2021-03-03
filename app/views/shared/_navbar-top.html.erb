@@ -1,9 +1,9 @@
 <nav class="navbar fixed-top navbar-dark bg-white">
-  <%= Woof %>
+ <%= link_to "Woof", root_path, class: "logo" %>
   <div>
-    <%= image_tag "icons8-email-send-50", alt: "Send a message" %>
-   <%= link_to root_path do %>
-  <%= image_tag "icons8-menu-50", alt: "Profile" %>
-  <% end %>
+    <%= image_tag "icons8-email-send-50", alt: "Send a message", class: "mx-2" %>
+     <%= link_to user_path(current_user) do %>
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar mx-2"%>
+    <% end %>
   </div>
 </nav>
