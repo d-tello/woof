@@ -1,0 +1,40 @@
+.form_container {
+  padding:100px 50px 20px 50px;
+  margin-bottom: 100px;
+  margin-left:70px;
+  font-size: 19px;
+}
+
+.form-control {
+  width:70%;
+}
+
+span {
+  color: #FFA149;
+}
+textarea {
+  boder:none;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+small {
+  color: #747474;
+  font-size:10px;
+}
+input[type="submit" i] {
+  background-color: #55BF80;
+  min-width:35px;
+  width:50%;
+  border-radius: 7px;
+  color: #FFFFFF;
+  border: none;}
+
+input:hover {
+  background-color: #2D8F55;
+}
+
+h1 {
+  margin-bottom:30px;
+  font-size: 28px;
+}
+
