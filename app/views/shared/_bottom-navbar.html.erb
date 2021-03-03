@@ -1,3 +1,4 @@
+ <% if user_signed_in? %>
 <nav class="navbar fixed-bottom navbar-dark bg-white">
   <%= link_to root_path do %>
   <%= image_tag "icons8-dog-house-50", alt: "Home", size: "40x40" %>
@@ -6,3 +7,4 @@
   <%= image_tag "icons8-dog-collar-50", alt: "Collar", size: "40x40" %>
   <%= image_tag "icons8-dog-heart-50", alt: "Dog heart", size: "40x40" %>
 </nav>
+<% end %>
