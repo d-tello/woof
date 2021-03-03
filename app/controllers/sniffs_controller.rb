@@ -19,5 +19,4 @@ class SniffsController < ApplicationController
          render "dogs/show"
     end
   end
-
 end

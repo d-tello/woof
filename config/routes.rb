@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  resources :dogs, only: [ :create, :show ] do
-    resources :sniffs, only: [ :create ]
+  resources :sniffs, only: [ :show, :create ]do
+    resources :chatrooms, only: :create
   end
 end
