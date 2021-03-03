@@ -28,6 +28,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore db.schema file
+/db/schema.rb
+
 /public/packs
 /public/packs-test
 /node_modules
@@ -39,3 +42,4 @@ yarn-debug.log*
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
+.env*
