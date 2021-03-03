@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
+
+  resources :dogs, only: [ :create, :show ] do
+    resources :sniffs, only: [ :create ]
+  end
 end
