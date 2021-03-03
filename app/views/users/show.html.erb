@@ -1,0 +1,20 @@
+<h1>Welcome <%= @user.username %></h1>
+
+<% if @user.photo.attached? %>
+<%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
+<% end %>
+
+
+<p>Email: <%= @user.email %></p>
+<p>Username: <%= @user.username %></p>
+<p>Dogs: <% @dogs.each do |dog|  %>
+  <ul>
+    <li>Name: <%= dog.name %></li>
+    <li>Breed: <%= dog.breed %></li>
+    <li>Age: <%= dog.age %></li>
+    <li>Bio: <%= dog.bio %></li>
+  </ul>
+  <% end %>
+</p>
+
+<%= link_to "Edit your profile", edit_user_registration_path  %>
