@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: %i[show]
+  resources :dogs, only: %i[show ceate delete edit]
 
   resources :chatrooms, only: :show do
     resources :messages, only: :create
