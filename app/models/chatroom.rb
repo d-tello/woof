@@ -1,3 +1,5 @@
 class Chatroom < ApplicationRecord
-  belongs_to :sniffs
+  belongs_to :sniff
+  has_many :messages
+
 end
