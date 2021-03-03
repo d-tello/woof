@@ -1,18 +1,22 @@
 class SniffsController < ApplicationController
-  def new
-    @sniff = Sniff.status(params[:sniff_id])
-    @dogs_id = Dogs.new(dogs_params)
-    @dogs_id.sniffer_id = @sniffer_id
-    @sniffer_id.sniffed_id = @sniffed_id
 
-    if sniffer_id == true && sniffed_id == true
+  # def new
+  #   @sniff = Sniff.new
+  # end
 
-      redirect "chatroom/show"
+  def create
+    @dog = Dog.find(params[:dog_id])
+    @sniff = Sniff.new
+    @sniff.sniffer = current_user.dog
+    @sniff.sniffed = @dog
+
+    if @sniff.save
+      @chatroom = Chatroom.new(sniff: @sniff)
+      @chatroom.save
+         redirect_to chatroom_path(@chatroom)
+
     else
-      render "dogs/show"
-
+         render "dogs/show"
     end
   end
-
-  def show; end
 end
