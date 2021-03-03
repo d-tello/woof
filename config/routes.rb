@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :sniffs, only: [ :show, :create ]do
     resources :chatrooms, only: :create
   end
+
+  resources :dogs_park, only: %i[show new create]
 end
