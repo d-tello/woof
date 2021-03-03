@@ -1,14 +1,20 @@
 .form_container {
-  padding:100px 50px 20px 50px;
-  margin-bottom: 100px;
-  margin-left:70px;
+  margin-bottom: 30px 50px 100px 50px;
   font-size: 19px;
 }
 
+.message-container {
+  width: 80%;
+
+}
 .form-control {
   width:70%;
 }
-
+.toptext-of-form {
+  margin:auto;
+  border: 1px solid red;
+  width: 100%;
+}
 span {
   color: #FFA149;
 }

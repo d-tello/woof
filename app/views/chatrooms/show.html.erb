@@ -1,6 +1,6 @@
 <div class="form_container">
 <h1><%= @chatroom.sniff.sniffed.name %></h1>
-<div class="toptext">
+
 <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
   <% @chatroom.messages.each do |message| %>
   <%= render "messages/message", message: message %>
@@ -11,5 +11,5 @@
   <%= f.input :content, label: false, placeholder: "WOOF: <Your doggie chat>" %>
   <%= f.submit "WOOF" %>
 <% end %>
-</div>
+
 </div>
