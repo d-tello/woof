@@ -1,26 +1,7 @@
 class Sniff < ApplicationRecord
-  belongs_to :sniffer
-  belongs_to :sniffed
-
-  # def new
-  #   @sniff = Sniff.new
-  # end
-
-  def create
-    @dog = Dog.find(params[:dog_id])
-    @sniff = Sniff.new
-    @sniff.sniffer = current_user.dog
-    @sniff.sniffed = @dog
-
-    if @sniff.save
-      @chatroom = Chatroom.new(sniff: @sniff)
-      @chatroom.save
-         redirect_to chatroom_path(@chatroom)
-
-    else
-         render "dogs/show"
-    end
-  end
+  belongs_to :sniffer, class_name: 'Dog'
+  belongs_to :sniffed, class_name: 'Dog'
+  has_many :chatrooms, dependent: :destroy
 
 
 end
