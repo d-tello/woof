@@ -1,0 +1,17 @@
+<h1>All the doggies around your place</h1>
+
+
+<ul>
+  <% @dogs.each do |dog| %>
+    <li>
+      <ul>
+        <li><%= dog.name %></li>
+        <li><%= dog.age %></li>
+        <li><%= dog.breed %></li>
+        <li><%= dog.bio %></li>
+      </ul>
+    </li>
+</ul>
+<% end %>
+
+<%= link_to "SNIFF IT!", chatroom_path, method: :create, data: {confirm: "sniff me!} %>
