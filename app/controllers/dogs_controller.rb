@@ -1,7 +1,8 @@
 class DogsController < ApplicationController
   def show
     @dog = Dog.find(params[:id])
-    
+  end
+
   def new
     @user = current_user
     @dog = Dog.new
