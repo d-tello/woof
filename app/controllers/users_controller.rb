@@ -3,4 +3,6 @@ class UsersController < ApplicationController
     @user = current_user
     @dogs = @user.dogs
   end
+
+
 end
