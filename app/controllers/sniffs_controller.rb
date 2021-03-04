@@ -18,4 +18,15 @@ class SniffsController < ApplicationController
       render "dogs/show"
     end
   end
+
+  def update
+    @sniff = Sniff.find(params[:id])
+    @sniff.status = true
+    if @sniff.save
+      @chatroom = Chatroom.new(sniff: @sniff)
+      redirect_to chatroom_path
+    else
+      render :index
+    end
+  end
 end

@@ -10,28 +10,8 @@
   </ul>
   <div class="received-sniffs-dogs">
     <% @received_sniffs.each do |sniff| %>
-        <%= sniff.sniffer.name%>
-        <%= render 'components/card_dog_small', dog: sniff.sniffer %>
+        <%= render 'components/card_dog_small', { dog: sniff.sniffer, sniff: sniff } %>
     <% end %>
-
-
-    <!-- TODO move to card-dog_small once creating a sniff works -->
-    <div class="card-dog-small mb-2 d-flex">
-      <%= image_tag "https://via.placeholder.com/343x204.png?text=dog.photo",
-        alt: "dog photo",
-        class: 'mr-3'
-      %>
-      <div class="card-dog-content flex-grow-1 d-flex flex-column justify-content-between">
-        <div class="card-dog-content-title d-flex justify-content-between">
-          <p class="medium mb-0">Luke</p>
-          <div class="status">
-            <p class="medium">ready to walk</p>
-          </div>
-        </div>
-        <p id="category" class="mb-0">Vizla, 4</p>
-        <%= link_to 'Sniff back', '#chat', class: 'btn btn-secondary' %>
-      </div>
-    </div>
   </div>
 </div>
 

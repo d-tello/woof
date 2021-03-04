@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  resources :sniffs, only: [ :show, :create, :index ] do
+  resources :sniffs, only: [ :show, :create, :index, :update ] do
     resources :chatrooms, only: :create
   end
 

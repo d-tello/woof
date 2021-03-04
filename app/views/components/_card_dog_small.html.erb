@@ -11,6 +11,10 @@
       </div>
     </div>
     <p id="category" class="mb-0"><%= dog.breed %>, <%= dog.age %></p>
-    <%= link_to 'Sniff back', '#chat', class: 'btn btn-secondary' %>
+    <% if sniff.status === true %>
+      <%= link_to 'Open chat', chatroom_path(sniff), class: 'btn btn-secondary-revert' %>
+    <% else %>
+      <%= link_to 'Sniff back', sniff_path(sniff), method: :patch, class: 'btn btn-secondary' %>
+    <% end %>
   </div>
 </div>

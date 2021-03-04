@@ -13,9 +13,16 @@
   }
 }
 
-
+.btn-primary,
 .btn-secondary {
   color: white;
   border-radius: 8px;
+  display: block;
+}
+
+.btn-secondary-revert {
+  border-radius: 8px;
+  border: 1px solid #F4F3F3;
+  color: $secondary;
   display: block;
 }
