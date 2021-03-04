@@ -1,5 +1,7 @@
 class SniffsController < ApplicationController
   def index
+    @received_sniffs = Sniff.where(sniffed: current_user.dogs.first)
+    @sent_sniffs = Sniff.where(sniffer: current_user.dogs.first)
   end
 
   def create

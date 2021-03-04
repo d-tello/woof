@@ -1,0 +1,17 @@
+<div class="card-dog_small mb-2">
+  <%= image_tag "https://via.placeholder.com/343x204.png?text=dog.photo", alt: "dog photo" %>
+  <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
+    <div class="card-dog-content-info ml-3">
+      <p class="medium"> <%= dog.name %></p>
+      <p>4 photos</p>
+    </div>
+    <div class="card-dog-content-tag d-flex align-items-end mr-3">
+      <div class="status">
+        <p class="medium">ready to walk</p>
+      </div>
+    </div>
+  </div>
+  <%= link_to '', user_dog_path(dog.user, dog), class: "stretched-link" %>
+</div>
+
+
