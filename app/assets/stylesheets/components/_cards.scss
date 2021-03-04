@@ -2,14 +2,14 @@
   border: 1px solid #F4F3F3;
   position: relative;
   width: 343px;
-}
 
-.card-dog img {
-  border-radius: 8px 8px 0 0;
-}
+  img {
+    border-radius: 8px 8px 0 0;
+  }
 
-.card-dog p {
-  margin: 0;
+  p {
+    margin: 0;
+  }
 }
 
 .card-dog-content {
@@ -17,13 +17,33 @@
   border-radius: 0 0 8px 8px;
 }
 
+.card-dog-small {
+  background-color: white;
+  border: 1px solid #F4F3F3;
+  border-radius: 8px;
+  padding: 13px;
+  position: relative;
+
+  img {
+    border-radius: 8px;
+    height: 107px;
+    object-fit: cover;
+    width: 107px;
+  }
+
+  #category {
+    color: $text-secondary;
+  }
+}
+
 .card-chatrooms {
   overflow: hidden;
-  height: 120px;
+  height: 150px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  border-radius: 5px;
 }
 
 .card-chatrooms img {
@@ -50,4 +70,3 @@
   padding: 16px;
   margin: 0 auto;
 }
-

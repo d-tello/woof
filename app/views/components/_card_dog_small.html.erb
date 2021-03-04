@@ -1,0 +1,20 @@
+<div class="card-dog-small mb-2 d-flex">
+  <%= image_tag "https://via.placeholder.com/343x204.png?text=dog.photo",
+    alt: "dog photo",
+    class: 'mr-3'
+  %>
+  <div class="card-dog-content flex-grow-1 d-flex flex-column justify-content-between">
+    <div class="card-dog-content-title d-flex justify-content-between">
+      <p class="medium mb-0"><%= dog.name %></p>
+      <div class="status">
+        <p class="medium">ready to walk</p>
+      </div>
+    </div>
+    <p id="category" class="mb-0"><%= dog.breed %>, <%= dog.age %></p>
+    <% if sniff.status === true %>
+      <%= link_to 'Open chat', chatroom_path(sniff), class: 'btn btn-secondary-revert' %>
+    <% else %>
+      <%= link_to 'Sniff back', sniff_path(sniff), method: :patch, class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</div>
