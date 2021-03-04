@@ -6,11 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#remove max file size limit for OpenURI
+OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
+OpenURI::Buffer.const_set 'StringMax', 0
+
 PARKSBERLIN = [
   'Wildenbruchplatz',
   'Goerlizer Park',
   'Hasenheide',
   'Tempelhofer Feld'
+]
+
+BREEDS = [
+  'cockapoo',
+  'dachshund',
+  'african',
+  'vizsla',
+  'entlebucher',
+  'chihuahua',
+  'whippet',
+  'labrador',
+  'dingo',
+  'chow'
 ]
 
 def delete_old_seeds
@@ -50,17 +67,32 @@ def create_user(i)
   puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
 end
 
-def create_dog
+def create_dog(breed)
+  url = URI.open("https://dog.ceo/api/breed/#{breed}/images").read
+  images_json = JSON.parse(url)
+  photos = []
+  3.times do |i|
+    photos << images_json["message"][i]
+  end
+  files = []
+  photos.each do |photo|
+    files << URI.open(photo)
+    sleep(1)
+  end
   puts 'Creating dog...'
-
   dog = Dog.create(
     name: Faker::Creature::Dog.name,
     age: rand(1..15),
-    breed: Faker::Creature::Dog.breed,
+    breed: breed.capitalize,
     bio: Faker::Creature::Dog.meme_phrase,
     user: User.last
   )
-  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username}"
+  files.each_with_index do |file, i|
+    puts "Downloading #{breed.capitalize} picture #{i + 1}"
+    dog.photos.attach(io: file, filename: "#{breed}#{i + 1}", content_type: 'image/jpg')
+  end
+
+  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username.capitalize}"
 end
 
 def create_dogs_park
@@ -90,9 +122,9 @@ end
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
 delete_old_seeds
 create_parks
-(1..10).to_a.each do |i|
-  create_user(i)
-  create_dog
+BREEDS.each_with_index do |breed, i|
+  create_user(i+1)
+  create_dog(breed)
 end
 create_sniff
 create_chatroom
