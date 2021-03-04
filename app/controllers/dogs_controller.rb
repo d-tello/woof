@@ -27,7 +27,7 @@ class DogsController < ApplicationController
   def update
     @dog = Dog.find(params[:id])
     @dog.update(dog_params)
-    redirect_to user_dog_path(current_user, @dog)
+    redirect_to dog_path(@dog)
   end
 
   private
