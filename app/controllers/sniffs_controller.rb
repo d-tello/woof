@@ -9,7 +9,6 @@ class SniffsController < ApplicationController
     @sniff = Sniff.new
     @sniff.sniffer = current_user.dogs.first
     @sniff.sniffed = @dog
-
     if @sniff.save
       @chatroom = Chatroom.new(sniff: @sniff)
       @chatroom.save
