@@ -1,8 +1,6 @@
 class SniffsController < ApplicationController
-
-  # def new
-  #   @sniff = Sniff.new
-  # end
+  def index
+  end
 
   def create
     @dog = Dog.find(params[:dog_id])
@@ -13,10 +11,9 @@ class SniffsController < ApplicationController
     if @sniff.save
       @chatroom = Chatroom.new(sniff: @sniff)
       @chatroom.save
-         redirect_to chatroom_path(@chatroom)
-
+      redirect_to chatroom_path(@chatroom)
     else
-         render "dogs/show"
+      render "dogs/show"
     end
   end
 end
