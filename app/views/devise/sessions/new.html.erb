@@ -1,5 +1,5 @@
 <h1 class="sign-in-header">Woof</h1>
-<%= image_tag "dog-walking", alt: "Walking with the dog", class: "sign-in-img " %>
+<%= image_tag "dog-walking", alt: "Walking with the dog", class: "sign-in-img" %>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-4">
@@ -15,7 +15,7 @@
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Log in", class: "btn sing-in-btn my-2" %>
+        <%= f.button :submit, "Log in", class: "btn sing-in-btn my-3" %>
       </div>
       <% end %>
       <%= render "devise/shared/links" %>

@@ -13,9 +13,19 @@
   }
 }
 
-
 .btn-secondary {
   color: white;
   border-radius: 8px;
-  width: 345px ;
+  width: 345px;
+}
+
+.sing-in-btn {
+  background-color: $secondary;
+  border-radius: 5px;
+  color: $white;
+  width: 100%;
+
+  &:hover {
+    color: $white;
+  }
 }
