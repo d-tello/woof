@@ -1,4 +1,8 @@
 .logo {
   font-family: $logo-font;
   font-size: 30px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
