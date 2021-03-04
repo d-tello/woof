@@ -5,5 +5,8 @@
 .chatrooms-list {
   list-style-type: none;
   padding-inline-start: 0px;
+}
 
+.chatrooms-list>li>a:hover {
+text-decoration: none;
 }
