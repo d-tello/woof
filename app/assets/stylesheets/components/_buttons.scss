@@ -26,7 +26,8 @@
   color: $secondary;
   display: block;
   filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.05));
-  
+}
+
 .sing-in-btn {
   background-color: $secondary;
   border-radius: 5px;
@@ -35,5 +36,5 @@
 
   &:hover {
     color: $white;
+  }
 }
-  
