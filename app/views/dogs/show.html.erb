@@ -20,7 +20,11 @@
         <p class="mb-0" id="category"><%= @dog.breed %>, <%= @dog.age %></p>
         <p><%= @dog.bio %></p>
       </div>
-      <%= link_to 'Sniff', '#', class: 'btn btn-secondary' %>
+        <% if @sniff %>
+          <%= link_to 'ALREADY SNIFFED', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary disabled" %>
+        <% else %>
+          <%= link_to 'SNIFF', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
+        <% end %>
     </div>
   </div>
 </div>
