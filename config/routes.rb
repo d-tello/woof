@@ -6,11 +6,11 @@ Rails.application.routes.draw do
     resources :dogs, only: %i[show new create]
   end
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: %i[show index] do
     resources :messages, only: :create
   end
 
-  resources :sniffs, only: [ :show, :create ]do
+  resources :sniffs, only: %i[show create] do
     resources :chatrooms, only: :create
   end
 
