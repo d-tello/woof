@@ -26,6 +26,12 @@ html_doc = Nokogiri::HTML(html_file)
 
 p html_doc.xpath("//option")
 
+# javascript function
+# var li = document.getElementsByClassName("dog-selector")
+# li[0].childNodes.forEach((breed) => {
+#   console.log(breed.value);
+# });
+
 
 def delete_old_seeds
   puts 'Deleting old seeds...'
