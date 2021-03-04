@@ -1,10 +1,11 @@
-<h1>Add the dog</h1>
-
-<%= simple_form_for [@user, @dog] do |f| %>
+<div style="margin-top: 5rem;" class="container">
+  <h1>Add the dog</h1>
+  <%= simple_form_for [@user, @dog] do |f| %>
   <%= f.input :name %>
   <%= f.input :breed %>
   <%= f.input :age %>
   <%= f.input :bio %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit %>
-<% end %>
+  <% end %>
+</div>
