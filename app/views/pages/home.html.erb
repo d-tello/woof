@@ -1,18 +1,28 @@
 <div class="container">
   <h1 class="mb-4">Home</h1>
-
-<% if current_user.dogs.empty? %>
-<p>Hello</p>
-<% else %>
+  <% if current_user.dogs.empty? %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button>
+  <!-- Modal -->
+  <%= render 'shared/modal' %>
+  <% else %>
   <div class="parks">
     <% @parks.each do |park| %>
-      <div class="parks-park mb-4">
-        <h2><%= park.name %></h2>
-        <% park.dogs.each do |dog| %>
-          <%= render 'components/card_dog', dog: dog %>
-        <% end %>
-      </div>
+    <div class="parks-park mb-4">
+      <h2>
+        <%= park.name %>
+      </h2>
+      <% park.dogs.each do |dog| %>
+      <%= render 'components/card_dog', dog: dog %>
+      <% end %>
+    </div>
     <% end %>
   </div>
 </div>
 <% end %>
+<!-- <script>
+$(document).ready(function() {
+  $('#exampleModalCenter').modal('show');
+});
+</script> -->
