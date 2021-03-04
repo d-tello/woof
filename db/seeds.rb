@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 PARKSBERLIN = [
   'Wildenbruchplatz',
   'Goerlizer Park',
@@ -37,7 +36,7 @@ def create_parks
       name: park,
       address: "#{park} Berlin"
     )
-  puts "=> 🏞 Created Park #{new_park.name}"
+    puts "=> 🏞 Created Park #{new_park.name}"
   end
 end
 
@@ -49,8 +48,6 @@ def create_user(i)
     username: Faker::Internet.username
   )
   puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
-
-
 end
 
 def create_dog
@@ -66,6 +63,14 @@ def create_dog
   puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username}"
 end
 
+def create_dogs_park
+  dogs_park = DogsPark.new
+  dogs_park.dog = Dog.first
+  dogs_park.park = Park.first
+  dogs_park.save
+  puts '=> Create a dog park'
+end
+
 def create_sniff
   puts 'Creating sniff...'
   sniff = Sniff.create(
@@ -79,6 +84,7 @@ def create_chatroom
   chatroom = Chatroom.new
   chatroom.sniff = Sniff.first
   chatroom.save
+  puts '=> Create a chatroom'
 end
 
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
@@ -90,4 +96,5 @@ create_parks
 end
 create_sniff
 create_chatroom
+create_dogs_park
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
