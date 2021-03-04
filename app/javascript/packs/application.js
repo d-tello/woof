@@ -22,9 +22,10 @@ ActiveStorage.start()
 import "bootstrap";
 
 // Internal imports, e.g:
+import {initChatroomChannel} from 'channels/chatroom_channel.js';
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
+ initChatroomChannel()
   // initSelect2();
 });
