@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #remove max file size limit for OpenURI
+require 'nokogiri'
+
 OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
 OpenURI::Buffer.const_set 'StringMax', 0
 
@@ -17,18 +19,13 @@ PARKSBERLIN = [
   'Tempelhofer Feld'
 ]
 
-BREEDS = [
-  'cockapoo',
-  'dachshund',
-  'african',
-  'vizsla',
-  'entlebucher',
-  'chihuahua',
-  'whippet',
-  'labrador',
-  'dingo',
-  'chow'
-]
+BREEDS = []
+url = "https://dog.ceo/dog-api/breeds-list"
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+
+p html_doc.xpath("//option")
+
 
 def delete_old_seeds
   puts 'Deleting old seeds...'
@@ -119,14 +116,14 @@ def create_chatroom
   puts '=> Create a chatroom'
 end
 
-puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
-delete_old_seeds
-create_parks
-BREEDS.each_with_index do |breed, i|
-  create_user(i+1)
-  create_dog(breed)
-end
-create_sniff
-create_chatroom
-create_dogs_park
-puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
+# puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
+# delete_old_seeds
+# create_parks
+# BREEDS.each_with_index do |breed, i|
+#   create_user(i+1)
+#   create_dog(breed)
+# end
+# create_sniff
+# create_chatroom
+# create_dogs_park
+# puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
