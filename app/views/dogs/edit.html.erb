@@ -1,0 +1,16 @@
+
+<div style="margin-top: 5rem;" class="container">
+
+<h1>Edit your dogs profile</h1>
+
+
+  <h1>Add the dog</h1>
+  <%= simple_form_for @dog do |f| %>
+  <%= f.input :name %>
+  <%= f.input :breed %>
+  <%= f.input :age %>
+  <%= f.input :bio %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit "Update" %>
+  <% end %>
+</div>
