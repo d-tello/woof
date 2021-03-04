@@ -1,10 +1,6 @@
 <div class="container">
   <h1 class="mb-4">Home</h1>
   <% if current_user.dogs.empty? %>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-  </button>
-  <!-- Modal -->
   <%= render 'shared/modal' %>
   <% else %>
   <div class="parks">
@@ -21,8 +17,3 @@
   </div>
 </div>
 <% end %>
-<!-- <script>
-$(document).ready(function() {
-  $('#exampleModalCenter').modal('show');
-});
-</script> -->
