@@ -1,6 +1,9 @@
 <div class="container">
   <h1 class="mb-4">Home</h1>
 
+<% if current_user.dogs.empty? %>
+<p>Hello</p>
+<% else %>
   <div class="parks">
     <% @parks.each do |park| %>
       <div class="parks-park mb-4">
@@ -12,3 +15,4 @@
     <% end %>
   </div>
 </div>
+<% end %>
