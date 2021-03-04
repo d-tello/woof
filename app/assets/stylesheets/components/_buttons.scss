@@ -1,0 +1,21 @@
+.button-back {
+  align-items: center;
+  background-color: lightgrey;
+  border-radius: 50%;
+  display: flex;
+  font-size: 20px;
+  height: 36px;
+  width: 36px;
+  justify-content: center;
+
+  i {
+    text-decoration: none;
+  }
+}
+
+
+.btn-secondary {
+  color: white;
+  border-radius: 8px;
+  width: 345px ;
+}
