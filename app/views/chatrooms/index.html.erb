@@ -1,20 +1,33 @@
 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, mollitia neque nihil ab tenetur modi itaque ratione explicabo. Beatae mollitia tempore, veritatis laborum, numquam tenetur quos amet, asperiores aspernatur quasi non culpa. Culpa error praesentium beatae ab ut tenetur facilis, fugit suscipit adipisci libero consequuntur? Nostrum labore quas, nobis odio?</p>
 <div class="container mt-5">
   <h1>Chatrooms</h1>
-  <ul>
-    <li>
-      <% @chatrooms_as_sniffer.each do |chatroom| %>
+  <ul class="chatrooms-list">
+    <% @chatrooms_as_sniffer.each do |chatroom| %>
+    <li class="my-2">
       <%= link_to chatroom_path(chatroom)  do%>
-         <%= chatroom.sniff.sniffer.name %>
-      <% end %>
-      <% end %>
+      <div class="card-chatrooms">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-chatrooms-infos">
+          <h2>
+            Chat with <%= chatroom.sniff.sniffer.name %>
+          </h2>
+        </div>
+      </div>
     </li>
-    <li>
-      <% @chatrooms_as_sniffed.each do |chatroom| %>
+    <% end %>
+    <% end %>    <% @chatrooms_as_sniffed.each do |chatroom| %>
+    <li class="my-2">
       <%= link_to chatroom_path(chatroom)  do%>
-         <%= chatroom.sniff.sniffer.name %>
-      <% end %>
-      <% end %>
+      <div class="card-chatrooms">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-chatrooms-infos">
+          <h2>
+            Chat with <%= chatroom.sniff.sniffer.name %>
+          </h2>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
 </div>
-</li>
-</ul>
