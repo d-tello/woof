@@ -1,3 +1,4 @@
+
 <div class="container-around-profil">
 <h1>Welcome <%= @user.username %></h1>
 
@@ -12,12 +13,39 @@ Username: <%= @user.username %></p>
 <h2>Your Dogs:</h2> <% @dogs.each do |dog|  %>
 </br>
 
-  <ul>
-    <li>Name: <%= dog.name %></li>
-    <li>Breed: <%= dog.breed %></li>
-    <li>Age: <%= dog.age %></li>
-    <li>Bio: <%= dog.bio %></li>
-  </ul>
+
+<div style="margin-top: 5rem;" class="container">
+  <h1>Welcome
+    <%= @user.username %>
+  </h1>
+  <% if @user.photo.attached? %>
+  <%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
+  <% end %>
+  <p>Email:
+    <%= @user.email %>
+  </p>
+  <p>Username:
+    <%= @user.username %>
+  </p>
+  <p>Dogs:
+    <% @dogs.each do |dog|  %>
+    <ul>
+      <li>Name:
+        <%= dog.name %>
+      </li>
+      <li>Breed:
+        <%= dog.breed %>
+      </li>
+      <li>Age:
+        <%= dog.age %>
+      </li>
+      <li>Bio:
+        <%= dog.bio %>
+      </li>
+    </ul>
+    <% end %>
+  </p>
+
   <% end %>
 
 
@@ -32,5 +60,8 @@ Username: <%= @user.username %></p>
    <span> 🌋 &nbsp;<%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
   </li>
 </ul>
+
+
 </div>
+
 </div>

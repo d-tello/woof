@@ -1,0 +1,31 @@
+<div style="margin-top: 5rem;" class="container">
+  <ul class="chatrooms-list">
+    <% @chatrooms_as_sniffer.each do |chatroom| %>
+    <li class="my-2">
+      <%= link_to chatroom_path(chatroom)  do%>
+      <div class="card-chatrooms">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-chatrooms-infos">
+          <h2>
+            Chat with <%= chatroom.sniff.sniffer.name %>
+          </h2>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <% end %>    <% @chatrooms_as_sniffed.each do |chatroom| %>
+    <li class="my-2">
+      <%= link_to chatroom_path(chatroom)  do%>
+      <div class="card-chatrooms">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-chatrooms-infos">
+          <h2>
+            Chat with <%= chatroom.sniff.sniffer.name %>
+          </h2>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
+</div>
