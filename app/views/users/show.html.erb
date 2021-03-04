@@ -6,9 +6,12 @@
 <% end %>
 
 
-<p>Email: <%= @user.email %></p>
-<p>Username: <%= @user.username %></p>
-<p>Dogs: <% @dogs.each do |dog|  %>
+<p class="smaller-then-text">Email: <%= @user.email %></br>
+Username: <%= @user.username %></p>
+<div class="content-container-profil">
+<h2>Your Dogs:</h2> <% @dogs.each do |dog|  %>
+</br>
+
   <ul>
     <li>Name: <%= dog.name %></li>
     <li>Breed: <%= dog.breed %></li>
@@ -16,15 +19,18 @@
     <li>Bio: <%= dog.bio %></li>
   </ul>
   <% end %>
-</p>
 
-<ul>
+
+<ul class="second_ul">
   <li>
-    <%= link_to "Edit your profile", edit_user_registration_path  %>
+   <span> 🤷🏾 &nbsp;<%= link_to "Edit your profile", edit_user_registration_path  %></span>
   </li>
   <li>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+   <span>🐶 &nbsp;<%= link_to "Edit your dogs profile", edit_registration_path %></span>
+  </li>
+  <li>
+   <span> 🌋 &nbsp;<%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
   </li>
 </ul>
-
+</div>
 </div>
