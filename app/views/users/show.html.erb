@@ -16,14 +16,7 @@ Username: <%= @user.username %></p>
   <% if @user.photo.attached? %>
   <%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
   <% end %>
-    <p>Email:
-      <%= @user.email %>
-    </p>
-    <p>Username:
-      <%= @user.username %>
-    </p>
-  <p>Dogs:
-    <% @dogs.each do |dog|  %>
+
     <ul id="userl">
       <li>Name:
         <%= dog.name %>
@@ -39,11 +32,10 @@ Username: <%= @user.username %></p>
       </li>
     </ul>
     <% end %>
-  </p>
-  <% end %>
 
 
-  <ul id="second_ul">
+<div id="second_ul">
+  <ul >
     <li>
      <span> 🤷🏾 &nbsp;<%= link_to "Edit your profile", edit_user_registration_path  %></span>
     </li>
@@ -54,5 +46,6 @@ Username: <%= @user.username %></p>
      <span> 🌋 &nbsp;<%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
     </li>
   </ul>
-  </div>
+</div>
+</div>
 </div>
