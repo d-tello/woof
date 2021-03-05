@@ -28,9 +28,9 @@
         </div>
       </div>
       <% if @sniff %>
-        <%= link_to 'Already sniffed', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary disabled" %>
+        <%= link_to 'Unsniff', sniff_path(@sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
       <% else %>
-        <%= link_to 'sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
+        <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
       <% end %>
     </div>
   </div>
