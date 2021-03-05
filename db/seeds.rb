@@ -12,6 +12,8 @@ require 'nokogiri'
 OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
 OpenURI::Buffer.const_set 'StringMax', 0
 
+Faker::UniqueGenerator.clear
+
 PARKSBERLIN = [
   'Wildenbruchplatz',
   'Goerlizer Park',
@@ -19,19 +21,19 @@ PARKSBERLIN = [
   'Tempelhofer Feld'
 ]
 
-BREEDS = []
-url = "https://dog.ceo/dog-api/breeds-list"
-html_file = open(url).read
-html_doc = Nokogiri::HTML(html_file)
-
-p html_doc.xpath("//option")
-
-# javascript function
-# var li = document.getElementsByClassName("dog-selector")
-# li[0].childNodes.forEach((breed) => {
-#   console.log(breed.value);
-# });
-
+# get the breeds list from the API and assign to constant
+req = open('https://dog.ceo/api/breeds/list/all').read
+     data = JSON.parse(req)
+    #     p data['message']
+    BREEDS = []
+     data['message'].each do|pair| 
+      if pair[1].length > 0
+        pair[1].each do |breed|
+          BREEDS << "#{pair[0]}/#{breed}" unless breed == "shepherd"
+        end
+      else BREEDS << pair[0] 
+      end
+    end
 
 def delete_old_seeds
   puts 'Deleting old seeds...'
@@ -60,14 +62,29 @@ def create_parks
   end
 end
 
-def create_user(i)
-  puts 'Creating user...'
-  user = User.create(
-    email: "user#{i}@woof.com",
-    password: '123456',
-    username: Faker::Internet.username
+def create_dogs_park(dog)
+  dogs_park = DogsPark.new
+  dogs_park.dog = dog
+  dogs_park.park = Park.find_by(name: PARKSBERLIN.sample)
+  dogs_park.save
+  puts "=> 🏞 Assigning a park to #{dog.name}\n"
+end
+
+def create_user
+  puts "\n=> 🧔 Creating user...\n"
+  user = User.new(
+    username: Faker::Internet.unique.username,
+    password: '123456'
   )
-  puts "=> 🧔Created #{user.username}, email: #{user.email}, password: #{user.password}"
+  fullname = user.username.split(/(\_|\.)/)
+  user.firstname = fullname[0].capitalize
+  user.lastname = fullname[2].capitalize unless fullname[2].nil?
+  user.email = "#{user.firstname}@woof.com"
+  user.save!
+  puts "\n=> Created #{user.firstname} #{user.lastname} (username: #{user.username}), email: #{user.email}, password: #{user.password}"
+  puts "\nDownloading profile picture for #{user.firstname}"
+  profile_picture = URI.open("https://kitt.lewagon.com/placeholder/users/random")
+  user.photo.attach(io: profile_picture, filename: "#{user.username}.jpg", content_type: 'image/jpg')
 end
 
 def create_dog(breed)
@@ -82,54 +99,49 @@ def create_dog(breed)
     files << URI.open(photo)
     sleep(1)
   end
-  puts 'Creating dog...'
+  puts "\n=> 🐕 Creating dog for #{User.last.firstname}... \n"
   dog = Dog.create(
     name: Faker::Creature::Dog.name,
     age: rand(1..15),
-    breed: breed.capitalize,
+    breed: breed.split('/').reverse.join(' ').titleize,
     bio: Faker::Creature::Dog.meme_phrase,
     user: User.last
+
   )
   files.each_with_index do |file, i|
-    puts "Downloading #{breed.capitalize} picture #{i + 1}"
-    dog.photos.attach(io: file, filename: "#{breed}#{i + 1}", content_type: 'image/jpg')
+    puts "Downloading #{dog.breed} picture #{i + 1}"
+    dog.photos.attach(io: file, filename: "#{breed}#{i + 1}.jpg", content_type: 'image/jpg')
   end
 
-  puts "=> 🐕 Created Dog #{dog.name} for #{dog.user.username.capitalize}"
-end
-
-def create_dogs_park
-  dogs_park = DogsPark.new
-  dogs_park.dog = Dog.first
-  dogs_park.park = Park.first
-  dogs_park.save
-  puts '=> Create a dog park'
+  puts "=> 🐕 Done! #{dog.user.firstname}'s dog is called #{dog.name}\n"
+  create_dogs_park(dog)
 end
 
 def create_sniff
-  puts 'Creating sniff...'
+  puts "=> 👃 Creating sniff..."
   sniff = Sniff.create(
     sniffer: Dog.first,
     sniffed: Dog.last
   )
-  puts "=> Created Sniff between #{sniff.sniffer.name} and #{sniff.sniffed.name}"
+  puts "\n=> Created Sniff between #{sniff.sniffer.name} and #{sniff.sniffed.name}\n"
 end
 
 def create_chatroom
   chatroom = Chatroom.new
   chatroom.sniff = Sniff.first
   chatroom.save
-  puts '=> Create a chatroom'
+  puts "\n=> 💬 Created a chatroom\n"
 end
 
-# puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
-# delete_old_seeds
-# create_parks
-# BREEDS.each_with_index do |breed, i|
-#   create_user(i+1)
-#   create_dog(breed)
-# end
-# create_sniff
-# create_chatroom
-# create_dogs_park
-# puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
+puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
+delete_old_seeds
+create_parks
+BREEDS.each_slice(2).to_a.each do |pair|
+  create_user
+  create_dog(pair[0])
+  create_dog(pair[1])
+  puts "\n🦴🦴🦴\n"
+end
+create_sniff
+create_chatroom
+puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'

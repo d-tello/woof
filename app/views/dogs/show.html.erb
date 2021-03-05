@@ -24,6 +24,7 @@
           </p>
           <p>
             <%= @dog.bio %>
+            <%= cl_image_tag @dog.photos.first.key %>
           </p>
         </div>
       </div>
