@@ -20,8 +20,8 @@ class SniffsController < ApplicationController
     @sniff = Sniff.find(params[:id])
     @sniff.status = true
     if @sniff.save
-      @chatroom = Chatroom.new(sniff: @sniff)
-      redirect_to chatroom_path
+      @chatroom = Chatroom.create(sniff: @sniff)
+      redirect_to chatroom_path(@chatroom)
     else
       render :index
     end
