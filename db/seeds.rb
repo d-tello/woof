@@ -27,7 +27,7 @@ req = open('https://dog.ceo/api/breeds/list/all').read
      data['message'].each do|pair| 
       if pair[1].length > 0
         pair[1].each do |breed|
-          BREEDS << "#{pair[0]}/#{breed}" unless breed == "shepherd"
+          BREEDS << "#{pair[0]}/#{breed}" unless breed == "shepherd" || breed == "dalmation"
         end
       else BREEDS << pair[0] 
       end
