@@ -1,19 +1,19 @@
-<div style="margin-top: 5rem;" class="container">
+<div style="margin-top: 5rem; margin-bottom: 5rem;" class="container">
   <h1 class="mb-4">Home</h1>
   <% if current_user.dogs.empty? %>
-  <%= render 'shared/modal' %>
+    <%= render 'shared/modal' %>
   <% else %>
-  <div class="parks">
-    <% @parks.each do |park| %>
-    <div class="parks-park mb-4">
-      <h2>
-        <%= park.name %>
-      </h2>
-      <% park.dogs.each do |dog| %>
-      <%= render 'components/card_dog', dog: dog %>
+    <div class="parks">
+      <% @parks.each do |park| %>
+      <div class="parks-park mb-4">
+        <h2>
+          <%= park.name %>
+        </h2>
+        <% park.dogs.each do |dog| %>
+          <%= render 'components/card_dog', dog: dog  if dog != current_user.dogs.first %>
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
-<% end %>
