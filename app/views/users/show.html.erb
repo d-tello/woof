@@ -1,32 +1,29 @@
-
-<div class="container-around-profil">
-<h1>Welcome <%= @user.username %></h1>
-
-<% if @user.photo.attached? %>
-<%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
-<% end %>
-
-<div style="margin-top: 5rem;" class="container">
-
-<p class="smaller-then-text">Email: <%= @user.email %></br>
-Username: <%= @user.username %></p>
-<div class="content-container-profil">
-<h2>Your Dogs:</h2> <% @dogs.each do |dog|  %>
-</br>
-
+<div id="container-around-profil">
+  <h1>Welcome <%= @user.username %></h1>
 
   <% if @user.photo.attached? %>
   <%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
   <% end %>
-  <p>Email:
-    <%= @user.email %>
-  </p>
-  <p>Username:
-    <%= @user.username %>
-  </p>
+
+<div style="margin-top: 5rem;" class="container">
+
+<p id="smaller-then-text">Email: <%= @user.email %></br>
+Username: <%= @user.username %></p>
+<div id="content-container-profil">
+  <h2>Your Dogs:</h2> <% @dogs.each do |dog|  %>
+  </br>
+  <% if @user.photo.attached? %>
+  <%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
+  <% end %>
+    <p>Email:
+      <%= @user.email %>
+    </p>
+    <p>Username:
+      <%= @user.username %>
+    </p>
   <p>Dogs:
     <% @dogs.each do |dog|  %>
-    <ul>
+    <ul id="userl">
       <li>Name:
         <%= dog.name %>
       </li>
@@ -42,23 +39,19 @@ Username: <%= @user.username %></p>
     </ul>
     <% end %>
   </p>
-
   <% end %>
 
 
-<ul class="second_ul">
-  <li>
-   <span> 🤷🏾 &nbsp;<%= link_to "Edit your profile", edit_user_registration_path  %></span>
-  </li>
-  <li>
-   <span>🐶 &nbsp;<%= link_to "Edit your dogs profile", edit_dog_path(@dogs.first) %></span>
-  </li>
-  <li>
-   <span> 🌋 &nbsp;<%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
-  </li>
-</ul>
-
-
-</div>
-
+  <ul id="second_ul">
+    <li>
+     <span> 🤷🏾 &nbsp;<%= link_to "Edit your profile", edit_user_registration_path  %></span>
+    </li>
+    <li>
+     <span>🐶 &nbsp;<%= link_to "Edit your dogs profile", edit_dog_path(@dogs.first) %></span>
+    </li>
+    <li>
+     <span> 🌋 &nbsp;<%= link_to "Log out", destroy_user_session_path, method: :delete %></span>
+    </li>
+  </ul>
+  </div>
 </div>
