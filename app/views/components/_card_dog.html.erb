@@ -1,9 +1,9 @@
-<div class="card-dog mb-2">
-  <%= image_tag "https://via.placeholder.com/343x204.png?text=dog.photo", alt: "dog photo" %>
+<div class="container card-dog mb-2">
+   <%= cl_image_tag dog.photos.first.key %>
   <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
     <div class="card-dog-content-info ml-3">
       <p class="medium"> <%= dog.name %></p>
-      <p>4 photos</p>
+      <p><%= dog.breed %>, <%= dog.age %></p>
     </div>
     <div class="card-dog-content-tag d-flex align-items-end mr-3">
       <div class="status">

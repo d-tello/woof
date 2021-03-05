@@ -1,4 +1,7 @@
 <div style="margin-top: 5rem;" class="container">
+  <% if @chatrooms_as_sniffer.class == String %>
+  <%= @chatrooms_as_sniffer %>
+  <% else %>
   <ul class="chatrooms-list">
     <% @chatrooms_as_sniffer.each do |chatroom| %>
     <li class="my-2">
@@ -15,6 +18,10 @@
     </li>
     <% end %>
     <% end %>
+    <% end %>
+    <% if @chatrooms_as_sniffed.class == String %>
+    <%= @chatrooms_as_sniffed %>
+    <% else %>
     <% @chatrooms_as_sniffed.each do |chatroom| %>
     <li class="my-2">
       <%= link_to chatroom_path(chatroom)  do%>
@@ -28,6 +35,7 @@
         </div>
       </div>
     </li>
+    <% end %>
     <% end %>
     <% end %>
   </ul>

@@ -1,4 +1,4 @@
-<div style="margin-top: 5rem;" class="container">
+<div style="margin-top: 3.8rem;">
   <div class="dog-image banner" style="background-image: url('https://via.placeholder.com/343x204.png?text=dog.photo');">
     <div class="container pt-3">
       <%= link_to root_path, class: 'button-back' do %>
@@ -27,11 +27,11 @@
           </p>
         </div>
       </div>
-        <% if @sniff %>
-          <%= link_to 'Already sniffed', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary disabled" %>
-        <% else %>
-          <%= link_to 'sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
-        <% end %>
+      <% if @sniff %>
+        <%= link_to 'Unsniff', sniff_path(@sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
+      <% else %>
+        <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
+      <% end %>
     </div>
   </div>
 </div>
