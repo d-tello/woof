@@ -18,6 +18,7 @@ Username: <%= @user.username %></p>
   <% if @user.photo.attached? %>
   <%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
   <% end %>
+
   <p>Email:
     <%= @user.email %>
   </p>
