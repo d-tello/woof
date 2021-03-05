@@ -92,7 +92,7 @@ def create_dog(breed)
   images_json = JSON.parse(url)
   photos = []
   3.times do |i|
-    photos << images_json["message"][i]
+    photos << images_json["message"][i] unless images_json["message"][i].nil?
   end
   files = []
   photos.each do |photo|
