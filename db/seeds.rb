@@ -34,7 +34,7 @@ req = open('https://dog.ceo/api/breeds/list/all').read
     end
 
 def delete_old_seeds
-  puts 'Deleting old seeds...'
+  puts "\n=> Clearing existing seeds"
   DogsPark.destroy_all
   puts '=> Deleted all dogparks'
   Park.destroy_all
@@ -43,20 +43,19 @@ def delete_old_seeds
   puts '=> Deleted all dogs'
   User.destroy_all
   puts '=> Deleted all users'
-  puts 'Deleting old sniffs...'
   Sniff.destroy_all
-  puts 'Deleting old chatrooms...'
-  Chatroom.destroy_all
+  puts "=> Deleted all sniffs\n"
+
 end
 
 def create_parks
-  puts 'Creating park...'
+  puts "\n=> 🏞 Creating parks..." 
   PARKSBERLIN.each do |park|
     new_park = Park.create(
       name: park,
       address: "#{park} Berlin"
     )
-    puts "=> 🏞 Created Park #{new_park.name}"
+    puts "=> 🏞 Created #{new_park.name}"
   end
 end
 
@@ -79,8 +78,11 @@ def create_user
   user.lastname = fullname[2].capitalize unless fullname[2].nil?
   user.email = "#{user.firstname}@woof.com"
   user.save!
-  puts "\n=> Created #{user.firstname} #{user.lastname} (username: #{user.username}), email: #{user.email}, password: #{user.password}"
-  puts "\nDownloading profile picture for #{user.firstname}"
+  puts "=> Created #{user.firstname} #{user.lastname}"
+  puts "- username: #{user.username}"
+  puts "- email: #{user.email}"
+  puts "- password: #{user.password}"
+  puts "=> Downloading profile picture for #{user.firstname}"
   profile_picture = URI.open("https://kitt.lewagon.com/placeholder/users/random")
   user.photo.attach(io: profile_picture, filename: "#{user.username}.jpg", content_type: 'image/jpg')
 end
@@ -107,28 +109,21 @@ def create_dog(breed)
 
   )
   files.each_with_index do |file, i|
-    puts "Downloading #{dog.breed} picture #{i + 1}"
+    puts "- Downloading #{dog.breed} picture #{i + 1}"
     dog.photos.attach(io: file, filename: "#{breed}#{i + 1}.jpg", content_type: 'image/jpg')
   end
 
-  puts "=> 🐕 Done! #{dog.user.firstname}'s dog is called #{dog.name}\n"
+  puts "\n=> 🐕 Done! #{dog.user.firstname}'s dog is called #{dog.name}\n"
   create_dogs_park(dog)
 end
 
 def create_sniff
   puts "=> 👃 Creating sniff..."
-  sniff = Sniff.create(
-    sniffer: Dog.first,
-    sniffed: Dog.last
-  )
-  puts "\n=> Created Sniff between #{sniff.sniffer.name} and #{sniff.sniffed.name}\n"
-end
-
-def create_chatroom
-  chatroom = Chatroom.new
-  chatroom.sniff = Sniff.first
-  chatroom.save
-  puts "\n=> 💬 Created a chatroom\n"
+  pair = (0..140).to_a.shuffle.take(2)
+  sniffer = pair[0]
+  sniffed = pair[1]
+  sniff = Sniff.create(sniffer: Dog.find_by(id: sniffer), sniffed: Dog.find_by(id: sniffed))
+  puts "\n=> #{sniff.sniffer.name} sniffed #{sniff.sniffed.name}"
 end
 
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
@@ -140,6 +135,6 @@ BREEDS.each_slice(2).to_a.each do |pair|
   create_dog(pair[1])
   puts "\n🦴🦴🦴\n"
 end
-create_sniff
-create_chatroom
+puts "=> 👃 Generating sniffs..."
+300.times { create_sniff }
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
