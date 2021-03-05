@@ -1,4 +1,4 @@
-<div style="margin-top: 5rem;" class="container">
+<div style="margin: 5rem 0px;" class="container">
   <h1>Welcome
     <%= @user.username %>
   </h1>
@@ -10,7 +10,7 @@
   </p>
   <p>Dogs:
     <% @dogs.each do |dog|  %>
-    <ul>
+    <ul class="chatrooms-list">
       <li>Name:
         <%= dog.name %>
       </li>
@@ -46,7 +46,7 @@
       </a>
     </div>
   </p>
-  <ul>
+  <ul class="chatrooms-list">
     <li>
       <%= link_to "Edit your profile", edit_user_registration_path  %>
     </li>
