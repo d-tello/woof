@@ -1,5 +1,7 @@
+
 <div style="margin-top: 5rem; margin-bottom: 5rem;" class="container">
-  <h1 class="mb-4">Home</h1>
+ <h1 class="mb-4">Doggies near you - ready to play</h1>
+
   <% if current_user.dogs.empty? %>
     <%= render 'shared/modal' %>
   <% else %>
