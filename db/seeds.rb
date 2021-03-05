@@ -27,7 +27,7 @@ req = open('https://dog.ceo/api/breeds/list/all').read
      data['message'].each do|pair| 
       if pair[1].length > 0
         pair[1].each do |breed|
-          BREEDS << "#{pair[0]}/#{breed}" unless breed == "shepherd" || breed == "dalmation"
+          BREEDS << "#{pair[0]}/#{breed}" unless breed == "shepherd"
         end
       else BREEDS << pair[0] 
       end
@@ -92,7 +92,7 @@ def create_dog(breed)
   images_json = JSON.parse(url)
   photos = []
   3.times do |i|
-    photos << images_json["message"][i]
+    photos << images_json["message"][i] unless images_json["message"][i].nil?
   end
   files = []
   photos.each do |photo|
