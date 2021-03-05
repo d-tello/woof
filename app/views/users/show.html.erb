@@ -23,6 +23,9 @@
       <li>Bio:
         <%= dog.bio %>
       </li>
+      <% dog.photos.each do |photo| %>
+        <li><%= cl_image_tag photo.key %></li>
+      <% end %>
     </ul>
     <% end %>
   </p>
