@@ -67,8 +67,8 @@ def create_dogs_park(dog)
   puts "=> 🏞 Assigning a park to #{dog.name}\n"
 end
 
-def create_user
-  puts "\n=> 🧔 Creating user...\n"
+def create_user(user_number)
+  puts "\n=> 🧔 Creating user #{user_number}...\n"
   user = User.new(
     username: Faker::Internet.unique.username,
     password: '123456'
@@ -76,7 +76,7 @@ def create_user
   fullname = user.username.split(/(\_|\.)/)
   user.firstname = fullname[0].capitalize
   user.lastname = fullname[2].capitalize unless fullname[2].nil?
-  user.email = "#{user.firstname}@woof.com"
+  user.email = "user#{user_number}@woof.com"
   user.save!
   puts "=> Created #{user.firstname} #{user.lastname}"
   puts "- username: #{user.username}"
@@ -129,8 +129,8 @@ end
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
 delete_old_seeds
 create_parks
-BREEDS.each_slice(2).to_a.each do |pair|
-  create_user
+BREEDS.each_slice(2).to_a.each_with_index do |pair, i|
+  create_user(i+1)
   create_dog(pair[0])
   create_dog(pair[1])
   puts "\n🦴🦴🦴\n"
