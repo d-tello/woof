@@ -25,9 +25,12 @@ import "bootstrap";
 import {initChatroomChannel} from 'channels/chatroom_channel.js';
 // import { initSelect2 } from '../components/init_select2';
 import { launchModal } from '../components/Modal';
+import { hideAlert } from '../components/alert'
 
 document.addEventListener('turbolinks:load', () => {
  initChatroomChannel()
   // initSelect2();
   launchModal();
+  $(".alert" ).fadeOut(3000);
+  hideAlert();
 });

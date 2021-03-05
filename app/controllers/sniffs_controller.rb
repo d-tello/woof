@@ -12,7 +12,7 @@ class SniffsController < ApplicationController
     if @sniff.save
       redirect_to dog_path(@dog)
     else
-      render "dogs/show"
+      render 'dogs/show'
     end
   end
 
@@ -24,6 +24,16 @@ class SniffsController < ApplicationController
       redirect_to chatroom_path
     else
       render :index
+    end
+  end
+
+  def destroy
+    @sniff = Sniff.find(params[:id])
+    @dog = @sniff.sniffed
+    if @sniff.destroy
+      redirect_to dog_path(@dog)
+    else
+      render 'dogs/show'
     end
   end
 end

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :sniffs, only: %i[index update] do
+  resources :sniffs, only: %i[index update destroy] do
     resources :chatrooms, only: :create
   end
 
