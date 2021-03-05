@@ -1,0 +1,34 @@
+<div style="margin-top: 5rem;" class="container">
+  <ul class="chatrooms-list">
+    <% @chatrooms_as_sniffer.each do |chatroom| %>
+    <li class="my-2">
+      <%= link_to chatroom_path(chatroom)  do%>
+      <div class="card-chatrooms">
+        <%= cl_image_tag chatroom.sniff.sniffed.photos.first.key %>
+        <div class="card-chatrooms-infos">
+          <h2>
+            Chat with
+            <%= chatroom.sniff.sniffed.name %>
+          </h2>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+    <% @chatrooms_as_sniffed.each do |chatroom| %>
+    <li class="my-2">
+      <%= link_to chatroom_path(chatroom)  do%>
+      <div class="card-chatrooms">
+        <%= cl_image_tag chatroom.sniff.sniffer.photos.first.key %>
+        <div class="card-chatrooms-infos">
+          <h2>
+            Chat with
+            <%= chatroom.sniff.sniffer.name %>
+          </h2>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
+</div>

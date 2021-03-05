@@ -13,9 +13,28 @@
   }
 }
 
-
+.btn-primary,
 .btn-secondary {
   color: white;
   border-radius: 8px;
-  width: 345px ;
+  display: block;
+}
+
+.btn-secondary-revert {
+  border-radius: 8px;
+  border: 1px solid #F4F3F3;
+  color: $secondary;
+  display: block;
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.05));
+}
+
+.sing-in-btn {
+  background-color: $secondary;
+  border-radius: 5px;
+  color: $white;
+  width: 100%;
+
+  &:hover {
+    color: $white;
+  }
 }
