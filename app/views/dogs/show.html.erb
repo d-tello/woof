@@ -11,6 +11,8 @@
       <div class="dog-content-title d-flex justify-content-between">
         <h2 class="mb-0">
           <%= @dog.name %>
+            </br>
+            </br>
         </h2>
         <div class="status">
           <p class="medium mb-0">ready to walk</p>
@@ -19,11 +21,14 @@
       <div class="dog-content-body">
         <div class="dog-content-body-info">
           <p class="mb-0" id="category">
-            <%= @dog.breed %>,
-            <%= @dog.age %>
+            Breed: <%= @dog.breed %>
+              </br>
+            Age: <%= @dog.age %>
           </p>
+            </br>
+            </br>
           <p>
-            <%= @dog.bio %>
+            More about me: <%= @dog.bio %>
           </p>
         </div>
       </div>
