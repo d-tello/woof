@@ -1,0 +1,19 @@
+.sign-in-header {
+  font-family: $logo-font;
+  font-size: 50px;
+  color: $primary;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.sign-in-img {
+  zoom: 50%;
+}
+
+#user_email {
+  border-radius: 5px !important;
+}
+
+#user_password {
+  border-radius: 5px !important;
+}

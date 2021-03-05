@@ -1,4 +1,4 @@
 class DogsPark < ApplicationRecord
   belongs_to :dog
-  has_many :parks
+  belongs_to :park
 end
