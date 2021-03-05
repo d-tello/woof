@@ -44,9 +44,7 @@ def delete_old_seeds
   User.destroy_all
   puts '=> Deleted all users'
   Sniff.destroy_all
-  puts '=> Deleted all sniffs'
-  Chatroom.destroy_all
-  puts "=> Deleted all chatrooms\n"
+  puts "=> Deleted all sniffs\n"
 
 end
 
@@ -121,18 +119,11 @@ end
 
 def create_sniff
   puts "=> 👃 Creating sniff..."
-  sniff = Sniff.create(
-    sniffer: Dog.first,
-    sniffed: Dog.last
-  )
-  puts "\n=> Created Sniff between #{sniff.sniffer.name} and #{sniff.sniffed.name}\n"
-end
-
-def create_chatroom
-  chatroom = Chatroom.new
-  chatroom.sniff = Sniff.first
-  chatroom.save
-  puts "\n=> 💬 Created a chatroom\n"
+  pair = (0..140).to_a.shuffle.take(2)
+  sniffer = pair[0]
+  sniffed = pair[1]
+  sniff = Sniff.create(sniffer: Dog.find_by(id: sniffer), sniffed: Dog.find_by(id: sniffed))
+  puts "\n=> #{sniff.sniffer.name} sniffed #{sniff.sniffed.name}"
 end
 
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
@@ -144,6 +135,6 @@ BREEDS.each_slice(2).to_a.each do |pair|
   create_dog(pair[1])
   puts "\n🦴🦴🦴\n"
 end
-create_sniff
-create_chatroom
+puts "=> 👃 Generating sniffs..."
+300.times { create_sniff }
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
