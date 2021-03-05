@@ -17,7 +17,19 @@ Username: <%= @user.username %></p>
   <%= cl_image_tag @user.photo.key, height: 100, width: 100 %>
   <% end %>
 
+
     <ul id="userl">
+
+  <p>Email:
+    <%= @user.email %>
+  </p>
+  <p>Username:
+    <%= @user.username %>
+  </p>
+  <p>Dogs:
+    <% @dogs.each do |dog|  %>
+    <ul>
+
       <li>Name:
         <%= dog.name %>
       </li>
