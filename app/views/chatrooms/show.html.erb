@@ -1,12 +1,12 @@
-<h1 style="margin-top: 5rem;"><%= @chatroom.sniff.sniffed.name %></h1>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-  <%= render "messages/message", message: message %>
+<div class="form_container">
+  <h1 style="margin-top: 5rem;"><%= @chatroom.sniff.sniffed.name %></h1>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+    <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "WOOF: <Your doggie chat>" %>
+    <%= f.submit "WOOF" %>
   <% end %>
 </div>
-
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom}" %>
-  <%= f.submit %>
-<% end %>
-
