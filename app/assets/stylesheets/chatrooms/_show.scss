@@ -1,6 +1,10 @@
 .form_container {
-  margin-bottom: 30px 50px 100px 50px;
+  margin: 30px 50px 100px 50px;
   font-size: 19px;
+  h1 {
+  padding-left:20px;
+  font-size: 28px;
+}
 }
 
 .message-container {
@@ -15,18 +19,26 @@
   border: 1px solid red;
   width: 100%;
 }
+
+.form_container_chatroom {
 span {
   color: #FFA149;
 }
-textarea {
+}
+.form_container_chatroom {textarea {
   boder:none;
   margin-top: 30px;
   margin-bottom: 30px;
 }
+}
+.form_container_chatroom {
 small {
   color: #747474;
   font-size:10px;
 }
+}
+
+.form_container_chatroom {
 input[type="submit" i] {
   background-color: #55BF80;
   min-width:35px;
@@ -34,13 +46,10 @@ input[type="submit" i] {
   border-radius: 7px;
   color: #FFFFFF;
   border: none;}
-
+}
+.form_container_chatroom {
 input:hover {
   background-color: #2D8F55;
 }
-
-h1 {
-  margin-bottom:30px;
-  font-size: 28px;
 }
 
