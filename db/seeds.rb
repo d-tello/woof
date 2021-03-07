@@ -127,17 +127,14 @@ def create_sniff
 end
 
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
-# In production all dogs have already been created, sniffs failed.
-# Will restore full version of seeds when sniffs are generated.
-# delete_old_seeds
-# create_parks
-# BREEDS.each_slice(2).to_a.each_with_index do |pair, i|
-#   create_user(i+1)
-#   create_dog(pair[0])
-#   create_dog(pair[1])
-#   puts "\n🦴🦴🦴\n"
-# end
-Sniff.destroy_all
+delete_old_seeds
+create_parks
+BREEDS.each_slice(2).to_a.each_with_index do |pair, i|
+  create_user(i+1)
+  create_dog(pair[0])
+  create_dog(pair[1])
+  puts "\n🦴🦴🦴\n"
+end
 puts "=> 👃 Generating sniffs..."
 300.times { create_sniff }
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
