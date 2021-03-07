@@ -119,7 +119,7 @@ end
 
 def create_sniff
   puts "=> 👃 Creating sniff..."
-  pair = (0..140).to_a.shuffle.take(2)
+  pair = (1..140).to_a.shuffle.take(2)
   sniffer = pair[0]
   sniffed = pair[1]
   sniff = Sniff.create(sniffer: Dog.find_by(id: sniffer), sniffed: Dog.find_by(id: sniffed))
@@ -127,14 +127,17 @@ def create_sniff
 end
 
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
-delete_old_seeds
-create_parks
-BREEDS.each_slice(2).to_a.each_with_index do |pair, i|
-  create_user(i+1)
-  create_dog(pair[0])
-  create_dog(pair[1])
-  puts "\n🦴🦴🦴\n"
-end
+# In production all dogs have already been created, sniffs failed.
+# Will restore full version of seeds when sniffs are generated.
+# delete_old_seeds
+# create_parks
+# BREEDS.each_slice(2).to_a.each_with_index do |pair, i|
+#   create_user(i+1)
+#   create_dog(pair[0])
+#   create_dog(pair[1])
+#   puts "\n🦴🦴🦴\n"
+# end
+Sniff.destroy_all
 puts "=> 👃 Generating sniffs..."
 300.times { create_sniff }
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Finished! 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
