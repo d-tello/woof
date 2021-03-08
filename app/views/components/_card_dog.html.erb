@@ -1,5 +1,6 @@
 <div class="card-dog my-4">
-   <%= cl_image_tag dog.photos.first.key %>
+  <div class="card-dog-photo-box" style="background-image: url(<%= cl_image_path dog.photos.first.key %>)">
+  </div>
   <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
     <div class="card-dog-content-info ml-3">
       <p class="medium"> <%= dog.name %></p>
@@ -13,5 +14,7 @@
   </div>
   <%= link_to '', dog_path(dog), class: "stretched-link" %>
 </div>
+
+
 
 
