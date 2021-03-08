@@ -11,7 +11,7 @@
         <div style="height: 300px" class="carousel-item active">
           <%= cl_image_tag @dog.photos.first.key, class: "d-block w-100"  %>
         </div>
-        <% @dog.photos.each do |photo| %>
+        <% @dog.photos[1..-1].each do |photo, index| %>
         <div style="height: 300px" class="carousel-item">
           <%= cl_image_tag photo.key, class: "d-block w-100"  %>
         </div>
