@@ -1,4 +1,4 @@
-<div style="margin-top: 8rem;" class="container" id="discover_page">
+<div style="margin-top: 6rem;" class="container" id="discover_page">
 <h1>Discover new buddies</h1>
 <div class="container card-dog mb-2">
    <%= cl_image_tag @dog.photos.first.key %>
@@ -14,5 +14,5 @@
     </div>
   </div>
  <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
- <%= link_to 'see more', discover_path, class: "btn btn-secondary-revert" %>
+ <%= link_to 'See More', discover_path, class: "btn btn-secondary-revert" %>
 </div>
