@@ -7,6 +7,21 @@
   }
 }
 
+.card-dog-user {
+  line-height: 1.6;
+
+  img {
+    float: left;
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  p {
+    margin-left: 5px;
+  }
+}
+
+
 .card-dog-photo-box {
   height: 300px;
   width: 100%;
