@@ -13,7 +13,9 @@
           <%= @dog.name %>
         </h2>
         <div class="status">
-          <p class="medium mb-0">ready to walk</p>
+          <% if @dog.ready_to_walk %>
+            <p class="medium">ready to walk</p>
+          <% end %>
         </div>
       </div>
       <div class="dog-content-body">

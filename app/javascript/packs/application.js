@@ -26,6 +26,7 @@ import {initChatroomChannel} from 'channels/chatroom_channel.js';
 // import { initSelect2 } from '../components/init_select2';
 import { launchModal } from '../components/Modal';
 import { hideAlert } from '../components/alert'
+import { toggleActivatesHiddenButton } from '../components/toggle'
 
 document.addEventListener('turbolinks:load', () => {
  initChatroomChannel()
@@ -33,4 +34,5 @@ document.addEventListener('turbolinks:load', () => {
   launchModal();
   $(".alert" ).fadeOut(3000);
   hideAlert();
+  toggleActivatesHiddenButton();
 });
