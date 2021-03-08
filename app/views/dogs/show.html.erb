@@ -29,10 +29,20 @@
           </p>
         </div>
       </div>
-      <% if @sniff %>
-        <%= link_to 'Unsniff', sniff_path(@sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
+      <% if @sent_sniff %>
+        <%= link_to 'Unsniff', sniff_path(@sent_sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
+      <% elsif @received_sniff && @received_sniff.status %>
+        <%= link_to 'Unsniff', sniff_path(@received_sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
+      <% elsif @received_sniff && @received_sniff.status == nil %>
+        <%= link_to 'Sniff back', sniff_path(@received_sniff), method: :patch, id:'sniffer', class: "btn btn-secondary" %>
       <% else %>
         <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
+      <% end %>
+      <% if @sent_sniff && @sent_sniff.status %>
+        <%= link_to 'Chat', chatroom_path(@sent_sniff.chatrooms.first), class: 'btn btn-primary' %>
+      <% end %>
+      <% if @received_sniff && @received_sniff.status %>
+        <%= link_to 'Chat', chatroom_path(@received_sniff.chatrooms.first), class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>
