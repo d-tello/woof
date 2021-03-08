@@ -1,18 +1,9 @@
+<%= render 'shared/navbar-top' %>
 <div class="container" style="margin-top: 80px;">
   <h1 class="mb-4 mt">Sniffs</h1>
-  <ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Received</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Sent</a>
-    </li>
-  </ul>
   <div class="received-sniffs-dogs">
     <% @received_sniffs.each do |sniff| %>
-        <%= render 'components/card_dog_small', { dog: sniff.sniffer, sniff: sniff } %>
+    <%= render 'components/card_dog_small', { dog: sniff.sniffer, sniff: sniff } %>
     <% end %>
   </div>
 </div>
-
-
