@@ -1,0 +1,18 @@
+<div style="margin-top: 6rem;" class="container" id="discover_page">
+<h1>Discover new buddies</h1>
+<div class="container card-dog mb-2">
+   <%= cl_image_tag @dog.photos.first.key %>
+  <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
+    <div class="card-dog-content-info ml-3">
+      <p class="medium"> <%= @dog.name %></p>
+      <p><%= @dog.breed %>, <%= @dog.age %></p>
+    </div>
+    <div class="card-dog-content-tag d-flex align-items-end mr-3">
+      <div class="status">
+        <p class="medium">ready to walk</p>
+      </div>
+    </div>
+  </div>
+ <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
+ <%= link_to 'See More', discover_path, class: "btn btn-secondary-revert" %>
+</div>
