@@ -1,14 +1,34 @@
-<%= render 'shared/navbar-top' %>
-<div style="margin-top: 5rem;" class="container">
-  <div class="message-container" id="message-<%= message.id %>">
-    <i class="author">
-      <span>
-        <%= message.user.email %></span>
-      <small>
-        <%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-    </i>
-    <p>
-      <%= message.content %>
-    </p>
-  </div>
+<% if message.user == dog.user %>
+  <div class="message-container receiver" id="message-<%= message.id %>">
+  <i class="author">
+    RECEIVE
+    <span>
+      <%= message.user.email %></span>
+    <small>
+      <%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+  </i>
+  <p>
+    <%= message.content %>
+  </p>
 </div>
+<% else %>
+  <div class="message-container sender" id="message-<%= message.id %>">
+  <i class="author">
+    SEND
+    <span>
+      <%= message.user.email %></span>
+    <small>
+      <%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+  </i>
+  <p>
+    <%= message.content %>
+  </p>
+</div>
+<% end %>
+
+
+
+
+
+
+

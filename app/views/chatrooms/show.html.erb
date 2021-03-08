@@ -2,12 +2,27 @@
 <h1 style="margin-top: 5rem;">
   <%= @chatroom.sniff.sniffed.name %>
 </h1>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-  <%= render "messages/message", message: message %>
+<div class="chatroom-content">
+  <div class="chatroom-content-profile">
+    <%= cl_image_tag @dog_to_message.photos.first.key, class: "avatar-large" %>
+    <p><%= @dog_to_message.name %></p>
+    <p>
+      <%= @dog_to_message.user.username %>
+    </p>
+    <p class="mb-0" id="category">
+      <%= @dog_to_message.breed %>, <%= @dog_to_message.age %>
+    </p>
+    <%= link_to 'Visit profile', dog_path(@dog_to_message), class: 'btn btn-secondary-revert' %>
+  </div>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+      <%= render "messages/message", { message: message , dog: @dog_to_message } %>
+    <% end %>
+  </div>
+</div>
+<div class="chatroom-submit">
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom}" %>
+  <%= f.submit %>
   <% end %>
 </div>
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-<%= f.input :content, label: false, placeholder: "Message ##{@chatroom}" %>
-<%= f.submit %>
-<% end %>
