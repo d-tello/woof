@@ -63,12 +63,12 @@ req = open('https://dog.ceo/api/breeds/list/all').read
      data = JSON.parse(req)
     #     p data['message']
     BREEDS = []
-     data['message'].each do|pair| 
+     data['message'].each do|pair|
       if pair[1].length > 0
         pair[1].each do |breed|
           BREEDS << "#{pair[0]}/#{breed}" unless breed == "shepherd"
         end
-      else BREEDS << pair[0] 
+      else BREEDS << pair[0]
       end
     end
 
@@ -88,7 +88,7 @@ def delete_old_seeds
 end
 
 def create_parks
-  puts "\n=> 🏞 Creating parks..." 
+  puts "\n=> 🏞 Creating parks..."
   PARKSBERLIN.each do |park|
     new_park = Park.create(
       name: park,
@@ -148,7 +148,8 @@ def create_dog(breed)
     name: name,
     age: rand(1..15),
     breed: breed.split('/').reverse.join(' ').titleize,
-    user: User.last
+    user: User.last,
+    ready_to_walk: true
   )
   dog.bio = "Hi I'm #{dog.name} and I'm #{dog.age.humanize} #{DOGEMOJI.sample}#{EMOJI.sample}\nI love to #{ACTIVITY.sample} with my owner #{dog.user.firstname}.\nMy friends say I am #{PERSONALITY.sample}. Let's be friends, sniff me! 🐽"
   dog.save!
