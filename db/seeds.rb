@@ -24,12 +24,12 @@ req = open('https://dog.ceo/api/breeds/list/all').read
      data = JSON.parse(req)
     #     p data['message']
     BREEDS = []
-     data['message'].each do|pair| 
+     data['message'].each do|pair|
       if pair[1].length > 0
         pair[1].each do |breed|
           BREEDS << "#{pair[0]}/#{breed}" unless breed == "shepherd"
         end
-      else BREEDS << pair[0] 
+      else BREEDS << pair[0]
       end
     end
 
@@ -49,7 +49,7 @@ def delete_old_seeds
 end
 
 def create_parks
-  puts "\n=> 🏞 Creating parks..." 
+  puts "\n=> 🏞 Creating parks..."
   PARKSBERLIN.each do |park|
     new_park = Park.create(
       name: park,
@@ -106,7 +106,7 @@ def create_dog(breed)
     breed: breed.split('/').reverse.join(' ').titleize,
     bio: Faker::Creature::Dog.meme_phrase,
     user: User.last
-
+    ready_to_walk: true;
   )
   files.each_with_index do |file, i|
     puts "- Downloading #{dog.breed} picture #{i + 1}"
