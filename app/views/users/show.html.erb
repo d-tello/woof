@@ -11,18 +11,30 @@
   <p>Dogs:
     <% @dogs.each do |dog|  %>
     <ul class="chatrooms-list">
-      <li>Name:
-        <%= dog.name %>
+      <li>
+        Name: <%= dog.name %>
       </li>
-      <li>Breed:
-        <%= dog.breed %>
+      <li>
+        Breed: <%= dog.breed %>
       </li>
-      <li>Age:
-        <%= dog.age %>
+      <li>
+        Age: <%= dog.age %>
       </li>
-      <li>Bio:
-        <%= dog.bio %>
+      <li>
+        Bio: <%= dog.bio %>
       </li>
+      <li>
+        <% if dog.ready_to_walk %>
+          <%= link_to 'Ready to walk', dog_toggle_ready_to_walk_path(dog),
+            method: :get,
+            class: 'btn btn-secondary-revert'%>
+        <% else %>
+          <%= link_to 'Ready to walk', dog_toggle_ready_to_walk_path(dog),
+            method: :get,
+            class: 'btn btn-secondary'%>
+        <% end %>
+      </li>
+
     </ul>
     <% end %>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
