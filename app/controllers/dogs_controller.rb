@@ -1,6 +1,15 @@
 class DogsController < ApplicationController
   def show
     @dog = Dog.find(params[:id])
+    @qrcode = RQRCode::QRCode.new("dogs_url")
+
+    @svg = @qrcode.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      module_size: 5
+    )
+
     @sniff = Sniff.find_by(sniffer: current_user.dogs.first, sniffed: @dog)
   end
 

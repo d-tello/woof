@@ -1,5 +1,5 @@
 <%= render 'shared/navbar-top-dog-profile' %>
-<div style="margin-top: 3.8rem;">
+<div style="margin-top: 6rem;">
   <div class="dog-image banner" style="background-image: url('https://via.placeholder.com/343x204.png?text=dog.photo');">
     <div class="container pt-3">
       <%= link_to root_path, class: 'button-back' do %>
@@ -35,6 +35,9 @@
       <% else %>
         <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
       <% end %>
+    <div class="qrcode">
+      <%= @svg.html_safe  %>
+    </div>
     </div>
   </div>
 </div>
