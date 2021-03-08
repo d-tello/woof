@@ -1,14 +1,26 @@
- <% if user_signed_in? %>
+<% if user_signed_in? %>
 <nav class="navbar fixed-bottom navbar-dark bg-white">
   <%= link_to root_path do %>
+  <% if current_page?(:controller => 'pages', :action => 'home') %>
+  <%= image_tag "icons8-dog-house-50-filled.png", alt: "Home", size: "40x40" %>
+  <% else %>
   <%= image_tag "icons8-dog-house-50.png", alt: "Home", size: "40x40" %>
   <% end %>
+  <% end %>
   <%= link_to discover_path do %>
+  <% if current_page?(:controller => 'dogs', :action => 'discover') %>
+  <%= image_tag "icons8-dog-bone-50-filled.png", alt: "Bone", size: "40x40" %>
+  <% else %>
   <%= image_tag "icons8-dog-bone-50.png", alt: "Bone", size: "40x40" %>
   <% end %>
+  <% end %>
   <%= image_tag "icons8-dog-collar-50.png", alt: "Collar", size: "40x40" %>
-   <%= link_to sniffs_path do %>
+  <%= link_to sniffs_path do %>
+  <% if current_page?(:controller => 'sniffs', :action => 'index') %>
+  <%= image_tag "icons8-dog-park-50-filled.png", alt: "Dog heart", size: "40x40" %>
+  <% else %>
   <%= image_tag "icons8-dog-park-50.png", alt: "Dog heart", size: "40x40" %>
+  <% end %>
   <% end %>
 </nav>
 <% end %>
