@@ -12,7 +12,7 @@
           <%= park.name %>
         </h2>
         <% park.dogs.each do |dog| %>
-          <%= render 'components/card_dog', dog: dog  if dog != current_user.dogs.first %>
+          <%= render 'components/card_dog', dog: dog unless current_user.dogs.include?(dog) %>
         <% end %>
       </div>
       <% end %>

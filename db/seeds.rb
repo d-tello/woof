@@ -14,9 +14,48 @@ Faker::UniqueGenerator.clear
 
 PARKSBERLIN = [
   'Wildenbruchplatz',
-  'Goerlizer Park',
+  'Görlizer Park',
   'Hasenheide',
-  'Tempelhofer Feld'
+  'Tempelhofer Feld',
+  'Volkspark Friedrichshain'
+]
+
+ACTIVITY = [
+  "swim 🏊",
+  "run 🏃",
+  "walk around town🚶",
+  "go on hikes ⛰️ ",
+  "play in the park 🏞️ ",
+  "laze around 🛋️",
+  "wrestle 🤼",
+  "play fetch 🦴",
+  "chill out 😴",
+  "dig holes 🕳️"
+]
+
+PERSONALITY = [
+  "quite shy",
+  "very active",
+  "a bit naughty",
+  "a little cheeky",
+  "very loving",
+  "lots of fun"
+]
+
+DOGEMOJI = [
+  "🦴",
+  "🐕",
+  "🐶",
+  "🐾",
+  "🐩"
+]
+
+EMOJI = [
+  "✨",
+  "🌈",
+  "💕",
+  "😘",
+  "⭐"
 ]
 
 # get the breeds list from the API and assign to constant
@@ -100,14 +139,19 @@ def create_dog(breed)
     sleep(1)
   end
   puts "\n=> 🐕 Creating dog for #{User.last.firstname}... \n"
-  dog = Dog.create(
-    name: Faker::Creature::Dog.name,
+  begin
+    name = Faker::Creature::Dog.unique.name
+  rescue
+    name = Faker::TvShows::RuPaul.unique.queen.split(" ").first
+  end
+  dog = Dog.new(
+    name: name,
     age: rand(1..15),
     breed: breed.split('/').reverse.join(' ').titleize,
-    bio: Faker::Creature::Dog.meme_phrase,
     user: User.last
-
   )
+  dog.bio = "Hi I'm #{dog.name} and I'm #{dog.age.humanize} #{DOGEMOJI.sample}#{EMOJI.sample}\nI love to #{ACTIVITY.sample} with my owner #{dog.user.firstname}.\nMy friends say I am #{PERSONALITY.sample}. Let's be friends, sniff me! 🐽"
+  dog.save!
   files.each_with_index do |file, i|
     puts "- Downloading #{dog.breed} picture #{i + 1}"
     dog.photos.attach(io: file, filename: "#{breed}#{i + 1}.jpg", content_type: 'image/jpg')
@@ -129,10 +173,9 @@ end
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
 delete_old_seeds
 create_parks
-BREEDS.each_slice(2).to_a.each_with_index do |pair, i|
+BREEDS.each_with_index do |breed, i|
   create_user(i+1)
-  create_dog(pair[0])
-  create_dog(pair[1])
+  create_dog(breed)
   puts "\n🦴🦴🦴\n"
 end
 puts "=> 👃 Generating sniffs..."
