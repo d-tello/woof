@@ -1,12 +1,12 @@
 class ChatroomsController < ApplicationController
   def index
-    if current_user.dogs.empty?
+    if current_user.dogs.blank?
       @chatrooms_as_sniffed = ' '
     else
       @chatrooms_as_sniffed = Chatroom.where(sniff: current_user.dogs.first.sniffs_as_sniffed)
     end
 
-    if current_user.dogs.empty?
+    if current_user.dogs.blank?
       @chatrooms_as_sniffer = ' '
     else
       @chatrooms_as_sniffer = Chatroom.where(sniff: current_user.dogs.first.sniffs_as_sniffer)

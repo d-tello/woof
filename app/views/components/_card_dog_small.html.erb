@@ -7,7 +7,9 @@
     <div class="card-dog-content-title d-flex justify-content-between">
       <p class="medium mb-0"><%= dog.name %></p>
       <div class="status">
-        <p class="medium">ready to walk</p>
+        <% if dog.ready_to_walk %>
+          <p class="medium">ready to walk</p>
+        <% end %>
       </div>
     </div>
     <p id="category" class="mb-0"><%= dog.breed %>, <%= dog.age %></p>
