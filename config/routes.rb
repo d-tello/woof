@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   end
 
   resources :dogs_park, only: %i[show new create]
+
+  get "discover", to: "dogs#discover"
 end
 
 

@@ -20,6 +20,10 @@ class DogsController < ApplicationController
     end
   end
 
+  def discover
+    @dog = Dog.all.sample
+  end
+
   private
 
   def dog_params
