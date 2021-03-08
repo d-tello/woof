@@ -1,3 +1,4 @@
+<%= render 'shared/navbar-top' %>
 <div style="margin: 5rem 0px;" class="container">
   <h1>Welcome
     <%= @user.username %>
@@ -10,32 +11,36 @@
   </p>
   <p>Dogs:
     <% @dogs.each do |dog|  %>
-      <ul class="chatrooms-list">
-        <li>
-          Name: <%= dog.name %>
-        </li>
-        <li>
-          Breed: <%= dog.breed %>
-        </li>
-        <li>
-          Age: <%= dog.age %>
-        </li>
-        <li>
-          Bio: <%= dog.bio %>
-        </li>
-        <li>
-          <%= simple_form_for(dog) do |f| %>
-            <div class="custom-control custom-switch pl-3">
-              <%= f.input :ready_to_walk, input_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-input toggle' }, label_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-label'}, label: ' '  %>
-            </div>
-          <% end %>
-          <%= link_to 'Ready to walk', dog_toggle_ready_to_walk_path(dog),
+    <ul class="chatrooms-list">
+      <li>
+        Name:
+        <%= dog.name %>
+      </li>
+      <li>
+        Breed:
+        <%= dog.breed %>
+      </li>
+      <li>
+        Age:
+        <%= dog.age %>
+      </li>
+      <li>
+        Bio:
+        <%= dog.bio %>
+      </li>
+      <li>
+        <%= simple_form_for(dog) do |f| %>
+        <div class="custom-control custom-switch pl-3">
+          <%= f.input :ready_to_walk, input_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-input toggle' }, label_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-label'}, label: ' '  %>
+        </div>
+        <% end %>
+        <%= link_to 'Ready to walk', dog_toggle_ready_to_walk_path(dog),
             method: :patch,
             id: 'ready_to_walk',
             class: 'btn btn-secondary-revert d-none',
             remote: true %>
-        </li>
-      </ul>
+      </li>
+    </ul>
     <% end %>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
