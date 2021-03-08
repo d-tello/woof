@@ -10,16 +10,19 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-
   resources :sniffs, only: %i[index update destroy] do
     resources :chatrooms, only: :create
   end
 
   resources :dogs, only: :show do
-    resources :sniffs, only: :create
+    resources :sniffs, only: %i[create]
   end
 
+  patch 'dogs/:id/toggle_ready_to_walk', to: 'dogs#toggle_ready_to_walk', as: 'dog_toggle_ready_to_walk'
+
   resources :dogs_park, only: %i[show new create]
+
+  get "discover", to: "dogs#discover"
 end
 
 
