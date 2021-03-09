@@ -16,6 +16,17 @@
   border-bottom: 1px #D4DCD5 solid;
 }
 
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    margin-bottom: 0px;
+    font-size: 14px;
+  }
+}
 
 .navbar-top-chatroom {
   background: $background-green;
