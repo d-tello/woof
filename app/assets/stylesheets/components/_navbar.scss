@@ -24,11 +24,19 @@
 
   p {
     margin-bottom: 0px;
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
 .navbar-top-chatroom {
   background: $background-green;
   border-bottom: 1px solid $separator;
+}
+
+.navbar-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 0rem;
 }
