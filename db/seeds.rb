@@ -14,7 +14,7 @@ Faker::UniqueGenerator.clear
 
 PARKSBERLIN = [
   'Wildenbruchplatz',
-  'Görlizer Park',
+  'Görlitzer Park',
   'Hasenheide',
   'Tempelhofer Feld',
   'Volkspark Friedrichshain'
@@ -99,10 +99,12 @@ def create_parks
 end
 
 def create_dogs_park(dog)
-  dogs_park = DogsPark.new
-  dogs_park.dog = dog
-  dogs_park.park = Park.find_by(name: PARKSBERLIN.sample)
-  dogs_park.save
+  dogs_park = DogsPark.create(
+    dog: dog,
+    park: Park.find_by(name: PARKSBERLIN.sample)
+  )
+  dog.viewed_park = dogs_park.park
+  dog.save!
   puts "=> 🏞 Assigning a park to #{dog.name}\n"
 end
 
@@ -149,7 +151,7 @@ def create_dog(breed)
     age: rand(1..15),
     breed: breed.split('/').reverse.join(' ').titleize,
     user: User.last,
-    ready_to_walk: true
+    ready_to_walk: (1..3).to_a.sample != 3
   )
   dog.bio = "Hi I'm #{dog.name} and I'm #{dog.age.humanize} #{DOGEMOJI.sample}#{EMOJI.sample}\nI love to #{ACTIVITY.sample} with my owner #{dog.user.firstname}.\nMy friends say I am #{PERSONALITY.sample}. Let's be friends, sniff me! 🐽"
   dog.save!
@@ -158,7 +160,7 @@ def create_dog(breed)
     dog.photos.attach(io: file, filename: "#{breed}#{i + 1}.jpg", content_type: 'image/jpg')
   end
 
-  puts "\n=> 🐕 Done! #{dog.user.firstname}'s dog is called #{dog.name}\n"
+  puts "\n=> 🐕 Done! #{dog.user.firstname}'s dog is called #{dog.name} and #{dog.ready_to_walk ? "is" : "is not"} ready to walk!\n"
   create_dogs_park(dog)
 end
 
