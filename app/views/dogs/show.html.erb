@@ -46,9 +46,6 @@
       <% if @received_sniff && @received_sniff.status %>
         <%= link_to 'Chat', chatroom_path(@received_sniff.chatrooms.first), class: 'btn btn-primary' %>
       <% end %>
-    <div class="qrcode">
-      <%= @svg.html_safe  %>
-    </div>
     </div>
   </div>
 </div>
