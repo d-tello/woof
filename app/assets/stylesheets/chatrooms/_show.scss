@@ -2,7 +2,6 @@
   color: $text-secondary;
 }
 
-
 .message-container p {
   padding: 16px;
   border-radius: 16px;
@@ -31,7 +30,7 @@
 .chatroom-footer {
   position: sticky;
   width: auto;
-  background:white;
+  background: $background-green;
   padding: 20px 0;
 }
 
@@ -46,6 +45,7 @@
   display: flex;
   border: 1px solid #E8E5E5;
   border-radius: 22px;
+  background: #FFFFFF;
 
   .form-group {
     flex-grow: 1;
