@@ -1,9 +1,5 @@
- <div style="margin-top: 5rem;" class="container">
- <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.email %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
-    </div>
+<div class="message-container <%= message.user == current_user ? 'sender' : 'receiver' %>" id="message-<%= message.id %>" data-sender-id="<%= message.user.id %>">
+  <p>
+    <%= message.content %>
+  </p>
 </div>
