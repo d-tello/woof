@@ -1,4 +1,3 @@
-// app/javascript/plugins/init_mapbox.js
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -16,22 +15,16 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://studio.mapbox.com/styles/uschi16/ckm1xv8ntandp17qkv86x9q4o/edit/#12/48.8665/2.3176'
+      style: 'mapbox://styles/mapbox/streets-v10'
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-      new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-    });
 
     fitMapToMarkers(map, markers);
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                      mapboxgl: mapboxgl }));
-  }
+                  mapboxgl: mapboxgl }));
 
-    markers.forEach((marker) => {
+      markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
     // Create a HTML element for your custom marker
@@ -48,6 +41,7 @@ const initMapbox = () => {
       .setPopup(popup)
       .addTo(map);
   });
+  }
 };
 
 
