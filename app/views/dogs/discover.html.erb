@@ -1,33 +1,31 @@
 <%= render 'shared/navbar-top' %>
-<div style="margin-top: 5rem;" class="container">
+<div style="margin-top: 5rem;" class="general-container">
   <h1 class="mb-4 text-center">Discover new buddies</h1>
-</div>
-<div class="card-dog my-4">
-  <div class="card-dog-photo-box mt-3" style="background-image: url(<%= cl_image_path @dog.photos.first.key, :transformation=>[
-  {:height=>250, :gravity=>"auto", :crop=>"fill"}]%>)">
-  </div>
-  <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
-    <div class="card-dog-content-info ml-3">
-      <p class="medium">
-        <%= @dog.name %>
-      </p>
-      <p>
-        <%= @dog.breed %>,
-        <%= @dog.age %>
-      </p>
+  <div class="card-dog my-4">
+    <div class="card-dog-photo-box mt-3" style="background-image: url(<%= cl_image_path @dog.photos.first.key, :transformation=>[
+  {:height=>250, :gravity=>"auto", :crop=>"fill"}]%>); border-top-right-radius: 15px; border-top-left-radius: 15px;">
     </div>
-    <div class="card-dog-content-tag d-flex align-items-end mr-3">
-      <div class="status">
-        <% if @dog.ready_to_walk %>
-        <p class="medium">ready to walk</p>
-        <% end %>
+    <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
+      <div class="card-dog-content-info ml-3">
+        <p class="medium">
+          <%= @dog.name %>
+        </p>
+        <p>
+          <%= @dog.breed %>,
+          <%= @dog.age %>
+        </p>
+      </div>
+      <div class="card-dog-content-tag d-flex align-items-end mr-3">
+        <div class="status">
+          <% if @dog.ready_to_walk %>
+          <p class="medium">ready to walk</p>
+          <% end %>
+        </div>
       </div>
     </div>
+    <%= link_to '', dog_path(@dog), class: "stretched-link" %>
   </div>
-  <%= link_to '', dog_path(@dog), class: "stretched-link" %>
-</div>
-<div class="container">
-  <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary my-3" %>
-  <%= link_to 'See More', discover_path, class: "btn btn-secondary-revert mb-3" %>
+    <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary my-3" %>
+    <%= link_to 'See More', discover_path, class: "btn btn-secondary-revert mb-3" %>
 </div>
 <%= render 'shared/bottom-navbar' %>

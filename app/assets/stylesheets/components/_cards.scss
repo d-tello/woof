@@ -1,6 +1,10 @@
 .card-dog {
   position: relative;
   width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 
   p {
     margin: 0;
@@ -30,6 +34,8 @@
 
 .card-dog-content {
   background-color: white;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .card-dog-small {

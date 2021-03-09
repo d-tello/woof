@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :dogs_park, only: %i[show new create]
 
   get "discover", to: "dogs#discover"
+
+  resources :parks, only: %i[index update create]
 end
 
 
