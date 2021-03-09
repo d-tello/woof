@@ -26,10 +26,9 @@ class DogsController < ApplicationController
     if @dog.update(dog_params)
       redirect_to root_path
     else
-      render "pages/home"
+      render 'pages/home'
     end
   end
-
 
   def discover
     @dog = Dog.all.sample
@@ -44,6 +43,6 @@ class DogsController < ApplicationController
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :photos, :breed, :age, :bio, :viewed_park_id)
+    params.require(:dog).permit(:name, :breed, :age, :bio, :viewed_park_id, photos: [])
   end
 end
