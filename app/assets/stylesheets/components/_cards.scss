@@ -57,37 +57,10 @@
   }
 }
 
-.card-chatrooms {
-  overflow: hidden;
-  height: 150px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-}
+.card-chatroom {
+  position: relative;
 
-.card-chatrooms img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-chatrooms h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-chatrooms p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-chatrooms .card-chatrooms-infos {
-  padding: 16px;
-  margin: 0 auto;
+  .card-chatroom-content-last-message{
+    color: $text-secondary;
+  }
 }
