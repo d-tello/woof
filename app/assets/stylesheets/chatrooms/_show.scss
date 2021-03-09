@@ -1,0 +1,18 @@
+.chatroom-content-profile #category {
+  color: $text-secondary;
+}
+
+.message-container p {
+  padding: 16px;
+  // min-height: 44px;
+  border-radius: 16px;
+  border: 1px solid #E8E5E5;
+}
+
+.receiver p {
+  background: white;
+}
+
+.sender p {
+  background: #E8E5E5;
+}

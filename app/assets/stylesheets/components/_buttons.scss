@@ -16,14 +16,14 @@
 .btn-primary,
 .btn-secondary {
   color: white;
-  border-radius: 8px;
+  border-radius: 16px;
   display: block;
 }
 
 .btn-secondary-revert {
   background-color: white;
-  border-radius: 8px;
-  border: 1px solid #F4F3F3;
+  border-radius: 16px;
+  border: 1px solid $secondary-light;
   color: $secondary;
   display: block;
   filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.05));
