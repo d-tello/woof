@@ -1,7 +1,6 @@
 <%= render 'shared/navbar-top' %>
-<div style="margin-top: 5rem; margin-bottom: 5rem;" class="container">
+<div style="margin-top: 5rem; margin-bottom: 5rem;" class="general-container">
  <h1 class="mb-4 text-center">Doggies to play</h1>
-</div>
   <% if current_user.dogs.empty? %>
   <%= render 'shared/modal' %>
   <% else %>
@@ -18,5 +17,6 @@
     <% end %>
   </div>
   <% end %>
+  </div>
 <%= render 'shared/bottom-navbar' %>
 
