@@ -5,9 +5,11 @@
       <%= dog.user.username %>
     </p>
   </div>
+  <% if dog.photos.first %>
   <div class="card-dog-photo-box mt-3" style="background-image: url(<%= cl_image_path dog.photos.first.key, :transformation=>[
   {:height=>250, :gravity=>"auto", :crop=>"fill"}]%>)">
   </div>
+  <% end %>
   <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
     <div class="card-dog-content-info ml-3">
       <p class="medium">
