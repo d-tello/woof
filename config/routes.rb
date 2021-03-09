@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :chatrooms, only: :create
   end
 
-  resources :dogs, only: :show do
+  resources :dogs, only: [:show, :update] do
     resources :sniffs, only: %i[create]
   end
 
