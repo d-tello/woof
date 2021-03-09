@@ -163,12 +163,12 @@ def create_dog(breed)
 end
 
 def create_sniff
-  puts "=> 👃 Creating sniff..."
-  pair = (1..140).to_a.shuffle.take(2)
+  puts "\n=> 👃 Creating sniff..."
+  pair = (Dog.first.id..Dog.last.id).to_a.shuffle.take(2)
   sniffer = pair[0]
   sniffed = pair[1]
   sniff = Sniff.create(sniffer: Dog.find_by(id: sniffer), sniffed: Dog.find_by(id: sniffed))
-  puts "\n=> #{sniff.sniffer.name} sniffed #{sniff.sniffed.name}"
+  puts "=> #{sniff.sniffer.name} sniffed #{sniff.sniffed.name}"
 end
 
 puts '🌱🌱🌱🌱🌱🌱🌱🌱🌱 Seeds 🌱🌱🌱🌱🌱🌱🌱🌱🌱'
