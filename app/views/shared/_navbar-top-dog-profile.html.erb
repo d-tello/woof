@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-dark bg-white">
+<nav class="navbar fixed-top navbar-dark navbar-top-bg">
   <%= link_to :back do %>
   <i style="font-size: 30px" class="fa fa-angle-left" aria-hidden="true"></i>
   <% end %>
@@ -8,10 +8,11 @@
     </h1>
   </div>
   <div>
-    <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key, class: "avatar" %>
-    <% else %>
-    <%= image_tag "user-icon-placeholder", class: "avatar"%>
+    <%= link_to sniffs_path do %>
+    <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "30x30", class: "mr-2" %>
+    <% end %>
+    <%= link_to chatrooms_path do %>
+    <%= image_tag "icons8-email-send-50.png", alt: "Send a message", size: "30x30", class: "mr-2"%>
     <% end %>
   </div>
 </nav>
