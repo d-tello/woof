@@ -1,26 +1,30 @@
-<%= render 'shared/navbar-top' %>
+<%= render 'shared/navbar-top-chatroom' %>
 <div style="margin-top: 5rem;"></div>
-<div class="chatroom-content">
-  <div class="chatroom-content-profile d-flex flex-column align-items-center pb-0 mb-3">
-    <%= cl_image_tag @dog_to_message.photos.first.key, class: "avatar-xlarge mb-2" %>
-    <p class="medium pb-0 mb-1"><%= @dog_to_message.name %></p>
-    <p class="pb-0 mb-1">
-      <%= @dog_to_message.user.username %>
-    </p>
-    <p class="pb-0 mb-1" id="category">
-      <%= @dog_to_message.breed %>, <%= @dog_to_message.age %>
-    </p>
-    <%= link_to 'Visit profile', dog_path(@dog_to_message), class: 'btn btn-secondary-revert' %>
+<div class="container">
+  <div class="chatroom-content">
+    <div class="chatroom-content-profile d-flex flex-column align-items-center pb-0 mb-3">
+      <%= cl_image_tag @dog_to_message.photos.first.key, class: "avatar-xlarge mb-2" %>
+      <p class="medium pb-0 mb-1"><%= @dog_to_message.name %></p>
+      <p class="pb-0 mb-1">
+        <%= @dog_to_message.user.username %>
+      </p>
+      <p class="pb-0 mb-1" id="category">
+        <%= @dog_to_message.breed %>, <%= @dog_to_message.age %>
+      </p>
+      <%= link_to 'Visit profile', dog_path(@dog_to_message), class: 'btn btn-secondary-revert' %>
+    </div>
+    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", { message: message , dog: @dog_to_message } %>
+      <% end %>
+    </div>
   </div>
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", { message: message , dog: @dog_to_message } %>
-    <% end %>
+  <div class="chatroom-footer fixed-bottom">
+    <div class="chatroom-submit">
+      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+        <%= f.input :content, label: false, placeholder: "Message...", class: 'medium' %>
+        <%= f.submit :Send, class: 'chatroom-submit-send mr-3'%>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="chatroom-submit">
-  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message ##{@chatroom}" %>
-  <%= f.submit %>
-  <% end %>
 </div>

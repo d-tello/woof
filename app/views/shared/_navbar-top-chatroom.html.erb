@@ -1,0 +1,17 @@
+<nav class="navbar fixed-top navbar-dark bg-white">
+  <%= link_to :back do %>
+  <i style="font-size: 30px" class="fa fa-angle-left" aria-hidden="true"></i>
+  <% end %>
+  <div>
+    <h1 class="logo">
+      <%= @dog_to_message.name %>
+    </h1>
+  </div>
+  <div>
+    <% if current_user.photo.attached? %>
+    <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+    <% else %>
+    <%= image_tag "user-icon-placeholder", class: "avatar"%>
+    <% end %>
+  </div>
+</nav>
