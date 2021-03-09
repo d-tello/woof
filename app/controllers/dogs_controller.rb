@@ -1,7 +1,8 @@
 class DogsController < ApplicationController
   def show
     @dog = Dog.find(params[:id])
-    @sniff = Sniff.find_by(sniffer: current_user.dogs.first, sniffed: @dog)
+    @sent_sniff = Sniff.find_by(sniffer: current_user.dogs.first, sniffed: @dog)
+    @received_sniff = Sniff.find_by(sniffer: @dog, sniffed: @current_user.dogs.first)
   end
 
   def new
@@ -20,10 +21,16 @@ class DogsController < ApplicationController
     end
   end
 
+
+  def discover
+    @dog = Dog.all.sample
+  end
+
   def toggle_ready_to_walk
     @dog = Dog.find(params[:id])
     @dog.toggle! :ready_to_walk
     redirect_to user_path(current_user)
+
   end
 
   private
