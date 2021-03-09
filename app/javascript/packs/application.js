@@ -27,6 +27,7 @@ import {initChatroomChannel} from 'channels/chatroom_channel.js';
 import { launchModal } from '../components/Modal';
 import { hideAlert } from '../components/alert'
 import { toggleActivatesHiddenButton } from '../components/toggle'
+import { changeDogPark } from '../components/change_dog_park.js'
 
 document.addEventListener('turbolinks:load', () => {
  initChatroomChannel()
@@ -35,4 +36,6 @@ document.addEventListener('turbolinks:load', () => {
   $(".alert" ).fadeOut(3000);
   hideAlert();
   toggleActivatesHiddenButton();
+  changeDogPark();
 });
+

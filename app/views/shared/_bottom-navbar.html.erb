@@ -1,26 +1,21 @@
 <% if user_signed_in? %>
 <nav class="navbar fixed-bottom navbar-dark bg-white">
   <%= link_to root_path do %>
-  <% if current_page?(:controller => 'pages', :action => 'home') %>
-  <%= image_tag "icons8-dog-house-50-filled.png", alt: "Home", size: "40x40" %>
-  <% else %>
-  <%= image_tag "icons8-dog-house-50.png", alt: "Home", size: "40x40" %>
-  <% end %>
+  <%= image_tag "icons8-dog-house-50#{'-filled' if current_page?(controller: 'pages', action: 'home')}.png", alt: "Home", size: "35x35" %>
   <% end %>
   <%= link_to discover_path do %>
-  <% if current_page?(:controller => 'dogs', :action => 'discover') %>
-  <%= image_tag "icons8-dog-bone-50-filled.png", alt: "Bone", size: "40x40" %>
-  <% else %>
-  <%= image_tag "icons8-dog-bone-50.png", alt: "Bone", size: "40x40" %>
+  <%= image_tag "icons8-dog-bone-50#{'-filled' if current_page?(controller: 'dogs', action: 'discover')}.png", alt: "Bone", size: "35x35" %>
   <% end %>
-  <% end %>
-  <%= image_tag "icons8-dog-collar-50.png", alt: "Collar", size: "40x40" %>
+  <%= image_tag "icons8-dog-collar-50.png", alt: "Collar", size: "35x35" %>
   <%= link_to sniffs_path do %>
-  <% if current_page?(:controller => 'sniffs', :action => 'index') %>
-  <%= image_tag "icons8-dog-heart-64-filled.png", alt: "Dog heart", size: "40x40" %>
+  <%= image_tag "icons8-dog-heart-64#{'-filled' if current_page?(controller: 'sniffs', action: 'index')}.png", alt: "Dog heart", size: "35x35" %>
+  <% end %>
+  <%= link_to user_path(current_user) do %>
+  <% if current_user.photo.attached? %>
+  <%= cl_image_tag current_user.photo.key, class: "avatar" %>
   <% else %>
-  <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "40x40" %>
+  <%= image_tag "user-icon-placeholder", class: "avatar"%>
+  <% end %>
   <% end %>
   <% end %>
 </nav>
-<% end %>
