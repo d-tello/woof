@@ -21,6 +21,15 @@ class DogsController < ApplicationController
     end
   end
 
+  def update
+    @dog = Dog.find(params[:id])
+    if @dog.update(dog_params)
+      redirect_to root_path
+    else
+      render "pages/home"
+    end
+  end
+
 
   def discover
     @dog = Dog.all.sample
@@ -30,12 +39,11 @@ class DogsController < ApplicationController
     @dog = Dog.find(params[:id])
     @dog.toggle! :ready_to_walk
     redirect_to user_path(current_user)
-
   end
 
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :photos, :breed, :age, :bio)
+    params.require(:dog).permit(:name, :photos, :breed, :age, :bio, :viewed_park_id)
   end
 end
