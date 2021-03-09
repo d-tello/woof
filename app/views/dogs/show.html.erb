@@ -1,51 +1,48 @@
 <%= render 'shared/navbar-top-dog-profile' %>
-<div style="margin-top: 3.8rem;">
+<div style="margin-top: 3.8rem; margin-bottom: 5rem;">
   <div class="dog-image banner" style="background-image: url('https://via.placeholder.com/343x204.png?text=dog.photo');">
-    <div class="container pt-3">
-      <%= link_to root_path, class: 'button-back' do %>
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
-      <% end %>
-    </div>
-  </div>
-  <div class="container pt-3">
-    <div class="dog-content">
-      <div class="dog-content-title d-flex justify-content-between">
-        <h2 class="mb-0">
-          <%= @dog.name %>
-        </h2>
-        <div class="status">
-          <% if @dog.ready_to_walk %>
+    <%= render 'components/carousel_dog_show' %>
+    <div class="container pt-3 mb-3">
+      <div class="dog-content">
+        <div class="dog-content-title d-flex justify-content-between">
+          <h2 class="mb-0">
+            <%= @dog.name %>
+          </h2>
+          <div class="status">
+            <% if @dog.ready_to_walk %>
             <p class="medium">ready to walk</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="dog-content-body">
+          <div class="dog-content-body-info">
+            <p class="mb-0" id="category">
+              <%= @dog.breed %>,
+              <%= @dog.age %>
+            </p>
+            <p>
+              <%= @dog.bio %>
+            </p>
+          </div>
+        </div>
+        <div class="mb-3">
+          <% if @sent_sniff %>
+          <%= link_to 'Unsniff', sniff_path(@sent_sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
+          <% elsif @received_sniff && @received_sniff.status %>
+          <%= link_to 'Unsniff', sniff_path(@received_sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
+          <% elsif @received_sniff && @received_sniff.status == nil %>
+          <%= link_to 'Sniff back', sniff_path(@received_sniff), method: :patch, id:'sniffer', class: "btn btn-secondary" %>
+          <% else %>
+          <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
           <% end %>
         </div>
-      </div>
-      <div class="dog-content-body">
-        <div class="dog-content-body-info">
-          <p class="mb-0" id="category">
-            <%= @dog.breed %>, <%= @dog.age %>
-          </p>
-          <p>
-            <%= @dog.bio %>
-          </p>
-        </div>
-      </div>
-      <div class="mb-3">
-        <% if @sent_sniff %>
-          <%= link_to 'Unsniff', sniff_path(@sent_sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
-        <% elsif @received_sniff && @received_sniff.status %>
-          <%= link_to 'Unsniff', sniff_path(@received_sniff), method: :delete, id:'sniffer', class: "btn btn-secondary-revert" %>
-        <% elsif @received_sniff && @received_sniff.status == nil %>
-          <%= link_to 'Sniff back', sniff_path(@received_sniff), method: :patch, id:'sniffer', class: "btn btn-secondary" %>
-        <% else %>
-          <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary" %>
+        <% if @sent_sniff && @sent_sniff.status %>
+        <%= link_to 'Chat', chatroom_path(@sent_sniff.chatrooms.first), class: 'btn btn-primary' %>
+        <% end %>
+        <% if @received_sniff && @received_sniff.status %>
+        <%= link_to 'Chat', chatroom_path(@received_sniff.chatrooms.first), class: 'btn btn-primary' %>
         <% end %>
       </div>
-      <% if @sent_sniff && @sent_sniff.status %>
-        <%= link_to 'Chat', chatroom_path(@sent_sniff.chatrooms.first), class: 'btn btn-primary' %>
-      <% end %>
-      <% if @received_sniff && @received_sniff.status %>
-        <%= link_to 'Chat', chatroom_path(@received_sniff.chatrooms.first), class: 'btn btn-primary' %>
-      <% end %>
     </div>
   </div>
 </div>
