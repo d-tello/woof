@@ -5,17 +5,18 @@
   <% if current_user.dogs.empty? %>
   <%= render 'shared/modal' %>
   <% else %>
-  <div class="parks">
-    <% @parks.each do |park| %>
-    <div class="parks-park mb-4">
-      <h2>
-        <%= park.name %>
-      </h2>
-      <% park.dogs.each do |dog| %>
+  <% if @dog %>
+    <%= simple_form_for(@dog, remote: true) do |f| %>
+      <%= f.association :viewed_park, include_blank: false, label: false %>
+      <%= f.submit class: "d-none", id: "dog-submit-button" %>
+    <% end %>
+  <% end %>
+  <div class="parks mb-4">
+    <h2><%= @viewed_park.name if @viewed_park %></h2>
+    <% @dogs.each do |dog| %>
       <%= render 'components/card_dog', dog: dog unless current_user.dogs.include?(dog) %>
-      <% end %>
-    </div>
     <% end %>
   </div>
   <% end %>
 <%= render 'shared/bottom-navbar' %>
+
