@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :username, length: { in: 2..30 }
   has_many :dogs, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
+
+  acts_as_reader
 end
