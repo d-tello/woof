@@ -1,20 +1,5 @@
-<% if message.user == dog.user %>
-  <div class="message-container receiver d-flex justify-content-start" id="message-<%= message.id %>">
-    <p>
-      <%= message.content %>
-    </p>
-  </div>
-<% else %>
-  <div class="message-container sender d-flex justify-content-end" id="message-<%= message.id %>">
-    <p>
-      <%= message.content %>
-    </p>
-  </div>
-<% end %>
-
-
-
-
-
-
-
+<div class="message-container <%= message.user == current_user ? 'sender' : 'receiver' %>" id="message-<%= message.id %>" data-sender-id="<%= message.user.id %>">
+  <p>
+    <%= message.content %>
+  </p>
+</div>

@@ -13,7 +13,7 @@
       </p>
       <%= link_to 'Visit profile', dog_path(@dog_to_message), class: 'btn btn-secondary-revert' %>
     </div>
-    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <div id="messages" data-chatroom-id="<%= @chatroom.id %>" data-current-user-id="<%= current_user.id %>">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", { message: message , dog: @dog_to_message } %>
       <% end %>
