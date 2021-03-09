@@ -1,20 +1,35 @@
 .avatar {
   width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
-.avatar-large {
-  width: 56px;
+
+.avatar-medium {
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
 }
+
+.avatar-xlarge {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.avatar-border {
+  box-shadow: 0px 0px 0px 2px $secondary;
+}
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border: white 1px solid;
 }
+
 .avatar-square {
   width: 40px;
   border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border: white 1px solid;
 }

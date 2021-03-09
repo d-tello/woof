@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_095505) do
+
+
+
+ActiveRecord::Schema.define(version: 2021_03_09_111503) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +63,9 @@ ActiveRecord::Schema.define(version: 2021_03_08_095505) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "ready_to_walk"
+    t.bigint "viewed_park_id"
     t.index ["user_id"], name: "index_dogs_on_user_id"
+    t.index ["viewed_park_id"], name: "index_dogs_on_viewed_park_id"
   end
 
   create_table "dogs_parks", force: :cascade do |t|
@@ -67,6 +73,9 @@ ActiveRecord::Schema.define(version: 2021_03_08_095505) do
     t.bigint "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.index ["dog_id"], name: "index_dogs_parks_on_dog_id"
     t.index ["park_id"], name: "index_dogs_parks_on_park_id"
   end
@@ -118,6 +127,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_095505) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chatrooms", "sniffs"
+  add_foreign_key "dogs", "parks", column: "viewed_park_id"
   add_foreign_key "dogs", "users"
   add_foreign_key "dogs_parks", "dogs"
   add_foreign_key "dogs_parks", "parks"

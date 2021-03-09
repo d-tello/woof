@@ -1,0 +1,61 @@
+.chatroom-content-profile #category {
+  color: $text-secondary;
+}
+
+.message-container p {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #E8E5E5;
+}
+
+.receiver {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sender {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.receiver p {
+  background: white;
+}
+
+.sender p {
+  background: #E8E5E5;
+}
+
+.chatroom-footer {
+  position: sticky;
+  width: auto;
+  background: $background-green;
+  padding: 20px 0;
+}
+
+.chatroom-submit-send {
+  color: $primary;
+  background: none;
+  border: none;
+}
+
+#new_message {
+  align-items: center;
+  display: flex;
+  border: 1px solid #E8E5E5;
+  border-radius: 22px;
+  background: #FFFFFF;
+
+  .form-group {
+    flex-grow: 1;
+    margin-bottom: 0;
+  }
+
+  .form-control {
+    border: none;
+    background: none;
+    height: 44px;
+    padding-top: 10px;
+  }
+}

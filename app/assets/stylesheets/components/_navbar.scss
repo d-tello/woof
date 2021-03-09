@@ -1,12 +1,34 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: white;
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
+
+.navbar-top-bg {
+  background-color: $background-green;
+  border-bottom: 1px #D4DCD5 solid;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    margin-bottom: 0px;
+    font-size: 14px;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-top-chatroom {
+  background: $background-green;
+  border-bottom: 1px solid $separator;
 }
