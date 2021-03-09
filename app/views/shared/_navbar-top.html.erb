@@ -2,7 +2,9 @@
 <nav class="navbar fixed-top navbar-dark navbar-top-bg ">
   <%= link_to "Woof", root_path, class: "logo" %>
   <div>
-    <%= image_tag "icons8-qr-code-64.png", alt: "Show your QR Code", size: "30x30", class: "mr-2"%>
+    <%= link_to sniffs_path do %>
+    <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "30x30", class: "mr-2" %>
+    <% end %>
     <%= link_to chatrooms_path do %>
     <%= image_tag "icons8-email-send-50.png", alt: "Send a message", size: "30x30", class: "mr-2"%>
     <% end %>
