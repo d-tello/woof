@@ -22,10 +22,15 @@
           <% end %>
         </div>
       </div>
-    </div>
-    <%= link_to '', dog_path(@dog), class: "stretched-link" %>
+
+    <%#= link_to '', dog_path(@dog), class: "stretched-link" %>
   </div>
-    <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary my-3" %>
-    <%= link_to 'See More', discover_path, class: "btn btn-secondary-revert mb-3" %>
+
+    <%= link_to 'Sniff', dog_sniffs_path(@dog, referrer:"discover"), method: :post, id:'sniffer', class: "btn btn-secondary my-3" %>
+    </div>
+
+    <%= link_to 'Woof', discover_path, class: "btn btn-secondary-revert mb-3" %>
+</div>
+  </div>
 </div>
 <%= render 'shared/bottom-navbar' %>
