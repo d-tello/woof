@@ -6,11 +6,13 @@ const initUpdateNavbarOnScroll = () => {
   if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 40) {
-        text.innerText = "Doggies to play"
+        text.style.transition = "all 2s";
+        text.innerText = "Dogs near you"
         header.style.visibility = "hidden";
 
       } else {
         header.style.visibility = "visible";
+        text.style.transition = "all 2s";
         text.innerText = "Woof";
       }
     });
