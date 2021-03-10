@@ -1,19 +1,26 @@
 const initUpdateNavbarOnScroll = () => {
   const navbar = document.querySelector("#navbar")
   const header = document.querySelector("#header-home")
-  const text = document.querySelector("#navbar > a")
+  const logoBefore = document.querySelector("#logo-before")
+  const logoAfter = document.querySelector("#logo-after")
 
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= 40) {
-        text.style.transition = "all 2s";
-        text.innerText = "Dogs near you"
-        header.style.visibility = "hidden";
-
+      if (window.scrollY >= 35) {
+        header.classList.remove('toggle-opacity-in');
+        header.classList.add('toggle-opacity-out');
+        logoBefore.classList.add('toggle-opacity-out');
+        logoBefore.classList.remove('toggle-opacity-in');
+        logoAfter.classList.remove('toggle-opacity-out');
+        logoAfter.classList.add('toggle-opacity-in');
+        logoAfter.style.display = "block"
       } else {
-        header.style.visibility = "visible";
-        text.style.transition = "all 2s";
-        text.innerText = "Woof";
+        header.classList.add('toggle-opacity-in');
+        header.classList.remove('toggle-opacity-out');
+        logoBefore.classList.add('toggle-opacity-in');
+        logoBefore.classList.remove('toggle-opacity-out');
+        logoAfter.classList.add('toggle-opacity-out');
+        logoAfter.classList.remove('toggle-opacity-in');
       }
     });
   }

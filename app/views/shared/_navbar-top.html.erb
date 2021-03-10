@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
 <nav class="navbar fixed-top navbar-dark navbar-top-bg" id="navbar">
-  <%= link_to "Woof", root_path, class: "logo" %>
+  <%= link_to "Woof", root_path, id: "logo-before", class: "logo toggle-opacity" %>
+  <%= link_to "Dogs near you", root_path, id: "logo-after", class: "logo logo-position" %>
   <div>
     <%= link_to sniffs_path do %>
     <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "30x30", class: "mr-2" %>
