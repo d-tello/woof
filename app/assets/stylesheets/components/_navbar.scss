@@ -37,3 +37,12 @@
   justify-content: space-between;
   padding: 0.5rem 1rem 0rem;
 }
+
+.toggle-opacity-out {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.toggle-opacity-in {
+  opacity: 1;
+}

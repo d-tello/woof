@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
-<nav class="navbar fixed-top navbar-dark navbar-top-bg ">
-  <%= link_to "Woof", root_path, class: "logo" %>
+<nav class="navbar fixed-top navbar-dark navbar-top-bg" id="navbar">
+  <%= link_to "Woof", root_path, id: "logo-before", class: "logo toggle-opacity" %>
+  <%= link_to "Dogs near you", root_path, id: "logo-after", class: "logo logo-position" %>
   <div class="menu-items d-flex">
     <div class="menu-items-sniffs">
       <%= link_to sniffs_path do %>

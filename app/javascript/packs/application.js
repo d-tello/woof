@@ -32,6 +32,8 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 import { changeDogPark } from '../components/change_dog_park.js'
 
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+
 
 document.addEventListener('turbolinks:load', () => {
  initChatroomChannel()
@@ -44,6 +46,8 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
 
   changeDogPark();
+
+  initUpdateNavbarOnScroll();
 
 });
 
