@@ -1,0 +1,13 @@
+// Bootstrap toggle success color
+.was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+  color: $secondary;
+}
+
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+  border-color: $secondary;
+  background-color: $secondary;
+}
+
+.custom-control-label {
+  color: $text-secondary;
+}

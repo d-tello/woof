@@ -1,7 +1,10 @@
 class SniffsController < ApplicationController
+  skip_before_action :get_unread_sniffs
+
   def index
     @received_sniffs = Sniff.where(sniffed: current_user.dogs.first)
     @sent_sniffs = Sniff.where(sniffer: current_user.dogs.first)
+    @unread_sniffs = Sniff.unread_by(current_user).where(sniffed: current_user.dogs.first).mark_as_read! :all, for: current_user
   end
 
   def create
@@ -12,7 +15,7 @@ class SniffsController < ApplicationController
     if @sniff.save
       redirect_to dog_path(@dog)
     else
-      render "dogs/show"
+      render 'dogs/show'
     end
   end
 
@@ -20,10 +23,20 @@ class SniffsController < ApplicationController
     @sniff = Sniff.find(params[:id])
     @sniff.status = true
     if @sniff.save
-      @chatroom = Chatroom.new(sniff: @sniff)
-      redirect_to chatroom_path
+      @chatroom = Chatroom.create(sniff: @sniff)
+      redirect_to chatroom_path(@chatroom)
     else
       render :index
+    end
+  end
+
+  def destroy
+    @sniff = Sniff.find(params[:id])
+    @dog = @sniff.sniffed
+    if @sniff.destroy
+      redirect_to dog_path(@dog)
+    else
+      render 'dogs/show'
     end
   end
 end

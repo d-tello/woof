@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_152919) do
+ActiveRecord::Schema.define(version: 2021_03_09_161247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,10 @@ ActiveRecord::Schema.define(version: 2021_03_03_152919) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "ready_to_walk"
+    t.bigint "viewed_park_id"
     t.index ["user_id"], name: "index_dogs_on_user_id"
+    t.index ["viewed_park_id"], name: "index_dogs_on_viewed_park_id"
   end
 
   create_table "dogs_parks", force: :cascade do |t|
@@ -89,6 +92,17 @@ ActiveRecord::Schema.define(version: 2021_03_03_152919) do
     t.float "longitude"
   end
 
+  create_table "read_marks", id: :serial, force: :cascade do |t|
+    t.string "readable_type", null: false
+    t.integer "readable_id"
+    t.string "reader_type", null: false
+    t.integer "reader_id"
+    t.datetime "timestamp"
+    t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable"
+    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
+    t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader"
+  end
+
   create_table "sniffs", force: :cascade do |t|
     t.bigint "sniffer_id"
     t.bigint "sniffed_id"
@@ -108,6 +122,8 @@ ActiveRecord::Schema.define(version: 2021_03_03_152919) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.string "firstname"
+    t.string "lastname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -115,6 +131,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_152919) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chatrooms", "sniffs"
+  add_foreign_key "dogs", "parks", column: "viewed_park_id"
   add_foreign_key "dogs", "users"
   add_foreign_key "dogs_parks", "dogs"
   add_foreign_key "dogs_parks", "parks"

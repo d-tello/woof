@@ -1,0 +1,18 @@
+<nav class="navbar fixed-top navbar-dark navbar-top-bg">
+  <%= link_to :back do %>
+  <i style="font-size: 30px" class="fa fa-angle-left" aria-hidden="true"></i>
+  <% end %>
+  <div>
+    <h1 class="logo">
+      <%= @dog.name %>
+    </h1>
+  </div>
+  <div>
+    <%= link_to sniffs_path do %>
+    <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "30x30", class: "mr-2" %>
+    <% end %>
+    <%= link_to chatrooms_path do %>
+    <%= image_tag "icons8-email-send-50.png", alt: "Send a message", size: "30x30", class: "mr-2"%>
+    <% end %>
+  </div>
+</nav>

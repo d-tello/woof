@@ -1,12 +1,37 @@
-.navbar-lewagon {
+.navbar-top-bg {
+  background-color: $background-green;
+  border-bottom: 1px #D4DCD5 solid;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  p {
+    margin-bottom: 0px;
+    font-size: 12px;
+  }
+}
+
+.navbar-top-chatroom {
+  background: $background-green;
+  border-bottom: 1px solid $separator;
+}
+
+.red-dot {
+  background: $danger;
+  border-radius: 50%;
+  bottom: -5px;
+  height: 5px;
+  left: 15px;
+  position: relative;
+  width: 5px;
+
+.navbar-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+  padding: 0.5rem 1rem 0rem;
