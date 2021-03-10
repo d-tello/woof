@@ -4,12 +4,7 @@
   <% if current_user.dogs.empty? %>
   <%= render 'shared/modal' %>
   <% else %>
-  <% if @dog %>
-    <%= simple_form_for(@dog, remote: true) do |f| %>
-      <%= f.association :viewed_park, include_blank: false, label: false %>
-      <%= f.submit class: "d-none", id: "dog-submit-button" %>
-    <% end %>
-  <% end %>
+<%= render 'components/park_selector' %>
   <div class="parks mb-4">
     <h2><%= @viewed_park.name if @viewed_park %></h2>
     <% @dogs.each do |dog| %>

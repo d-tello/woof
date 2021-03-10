@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-
-ActiveRecord::Schema.define(version: 2021_03_09_111503) do
-
+ActiveRecord::Schema.define(version: 2021_03_09_164640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,9 +69,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_111503) do
     t.bigint "park_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latitude"
-    t.float "longitude"
-    t.string "address"
     t.index ["dog_id"], name: "index_dogs_parks_on_dog_id"
     t.index ["park_id"], name: "index_dogs_parks_on_park_id"
   end
@@ -97,6 +90,17 @@ ActiveRecord::Schema.define(version: 2021_03_09_111503) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
+  end
+
+  create_table "read_marks", id: :serial, force: :cascade do |t|
+    t.string "readable_type", null: false
+    t.integer "readable_id"
+    t.string "reader_type", null: false
+    t.integer "reader_id"
+    t.datetime "timestamp"
+    t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable"
+    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
+    t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader"
   end
 
   create_table "sniffs", force: :cascade do |t|

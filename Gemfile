@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
 # Use postgresql as the database for Active Record
@@ -26,17 +25,17 @@ gem 'rqrcode'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'autoprefixer-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
-gem 'devise'
-gem 'geocoder'
-
 gem 'cloudinary', '~> 1.16.0'
-
-gem 'autoprefixer-rails'
+gem 'devise'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'font-awesome-sass'
+gem 'geocoder'
 gem 'simple_form'
+gem 'unread'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

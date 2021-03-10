@@ -1,0 +1,17 @@
+<div class="card-chatroom d-flex mb-2 align-items-center">
+  <div class="card-chatroom-avatar">
+    <%= cl_image_tag @dog[index].photos.first.key, class: "avatar-large mb-2 mr-3"%>
+    <% if @dog[index].ready_to_walk %>
+      <div class="card-chatroom-content-status green-dot"></div>
+    <% end %>
+  </div>
+  <div class="card-chatroom-content">
+    <div class="card-chatroom-content-name medium">
+      <%= @dog[index].name %>
+    </div>
+    <div class="card-chatroom-content-last-message">
+      <%= chatroom.messages.last.content.truncate(20) %>
+    </div>
+  </div>
+  <%= link_to '', chatroom_path(chatroom), class: "stretched-link" %>
+</div>

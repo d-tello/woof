@@ -5,13 +5,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true
   validates :username, uniqueness: true
-  validates :username, length: { in: 3..20 }
+  validates :username, length: { in: 2..30 }
   has_many :dogs, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
+
   after_create :generate_code
 
   def generate_code
     self.code = SecureRandom.hex
     save
   end
+
+
+  acts_as_reader
+
 end
