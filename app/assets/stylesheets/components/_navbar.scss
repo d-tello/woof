@@ -1,5 +1,11 @@
 .navbar-top {
   background-color: $background-green;
+  border-bottom: 1px #D4DCD5 solid;
+  height: 62px;
+}
+
+.navbar-top-bg {
+  background-color: $background-green;
   border-bottom: 1px solid $separator;
   height: 60px;
 }
@@ -15,6 +21,17 @@
     font-size: 12px;
   }
 }
+
+.navbar-top-dog-profile-left {
+  i {
+    // margin-left: 10px;
+  }
+
+  .logo {
+    margin-left: 10px;
+  }
+}
+
 
 .navbar-top-chatroom {
   background: $background-green;
