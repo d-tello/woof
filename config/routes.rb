@@ -27,7 +27,11 @@ Rails.application.routes.draw do
 
   get "discover", to: "dogs#discover"
 
+
+  resources :users, only: :show
+
   resources :parks, only: %i[index update create]
+
 end
 
 

@@ -1,6 +1,8 @@
 class DogsController < ApplicationController
   def show
     @dog = Dog.find(params[:id])
+    @sniff = Sniff.find_by(sniffer: current_user.dogs.first, sniffed: @dog)
+
     @sent_sniff = Sniff.find_by(sniffer: current_user.dogs.first, sniffed: @dog)
     @received_sniff = Sniff.find_by(sniffer: @dog, sniffed: @current_user.dogs.first)
   end
@@ -13,13 +15,16 @@ class DogsController < ApplicationController
   def create
     @dog = Dog.new(dog_params)
     @dog.user = current_user
-
+    park_id = params.require(:dog).permit(:park_ids)[:park_ids]
+    park = Park.find(park_id)
+    @dog.parks << park
     if @dog.save
       redirect_to user_path(current_user)
     else
       render :new
     end
   end
+
 
   def update
     @dog = Dog.find(params[:id])
