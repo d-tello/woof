@@ -1,7 +1,10 @@
 class SniffsController < ApplicationController
+  skip_before_action :get_unread_sniffs
+
   def index
     @received_sniffs = Sniff.where(sniffed: current_user.dogs.first)
     @sent_sniffs = Sniff.where(sniffer: current_user.dogs.first)
+    @unread_sniffs = Sniff.unread_by(current_user).where(sniffed: current_user.dogs.first).mark_as_read! :all, for: current_user
   end
 
   def create
