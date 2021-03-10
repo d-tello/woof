@@ -92,6 +92,17 @@ ActiveRecord::Schema.define(version: 2021_03_09_161247) do
     t.float "longitude"
   end
 
+  create_table "read_marks", id: :serial, force: :cascade do |t|
+    t.string "readable_type", null: false
+    t.integer "readable_id"
+    t.string "reader_type", null: false
+    t.integer "reader_id"
+    t.datetime "timestamp"
+    t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable"
+    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
+    t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader"
+  end
+
   create_table "sniffs", force: :cascade do |t|
     t.bigint "sniffer_id"
     t.bigint "sniffed_id"
