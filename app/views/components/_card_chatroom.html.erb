@@ -12,6 +12,8 @@
     <div class="card-chatroom-content-last-message">
       <% if chatroom.messages.last %>
         <%= chatroom.messages.last.content.truncate(20) %>
+      <% else %>
+        <p>Start chatting with <%= @dog[index].name %></p>
       <% end %>
     </div>
   </div>
