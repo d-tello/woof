@@ -1,12 +1,18 @@
 <% if user_signed_in? %>
 <nav class="navbar fixed-top navbar-dark navbar-top-bg ">
   <%= link_to "Woof", root_path, class: "logo" %>
-  <div>
-    <%= link_to sniffs_path do %>
-    <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "30x30", class: "mr-2" %>
-    <% end %>
+  <div class="menu-items d-flex">
+    <div class="menu-items-sniffs">
+      <%= link_to sniffs_path do %>
+        <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "30x30", class: "mr-2" %>
+      <% end %>
+      <% unless @unread_sniffs.blank? %>
+        <div class="red-dot">
+        </div>
+      <% end %>
+    </div>
     <%= link_to chatrooms_path do %>
-    <%= image_tag "icons8-email-send-50.png", alt: "Send a message", size: "30x30", class: "mr-2"%>
+      <%= image_tag "icons8-email-send-50.png", alt: "Send a message", size: "30x30", class: "mr-2"%>
     <% end %>
   </div>
 <% end %>
