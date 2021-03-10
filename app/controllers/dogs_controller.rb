@@ -1,6 +1,8 @@
 class DogsController < ApplicationController
   def show
     @dog = Dog.find(params[:id])
+    @sniff = Sniff.find_by(sniffer: current_user.dogs.first, sniffed: @dog)
+
     @sent_sniff = Sniff.find_by(sniffer: current_user.dogs.first, sniffed: @dog)
     @received_sniff = Sniff.find_by(sniffer: @dog, sniffed: @current_user.dogs.first)
   end
@@ -20,6 +22,7 @@ class DogsController < ApplicationController
       render :new
     end
   end
+
 
   def update
     @dog = Dog.find(params[:id])
