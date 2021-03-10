@@ -1,6 +1,6 @@
 <%= render 'shared/navbar-top' %>
 <div style="margin-top: 5rem; margin-bottom: 5rem;" class="general-container">
- <h1 class="mb-4 text-center">Doggies to play</h1>
+ <h1 class="mb-4">Doggies to play</h1>
   <% if current_user.dogs.empty? %>
   <%= render 'shared/modal' %>
   <% else %>
@@ -13,7 +13,6 @@
     </div>
   <% end %>
   <div class="parks mb-4">
-    <h2><%= @viewed_park.name if @viewed_park %></h2>
     <% @dogs.each do |dog| %>
       <%= render 'components/card_dog', dog: dog unless current_user.dogs.include?(dog) %>
     <% end %>
