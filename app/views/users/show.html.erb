@@ -1,4 +1,5 @@
-<div style="margin-top: 5rem;" class="container">
+<%= render 'shared/navbar-top' %>
+<div style="margin-top: 5rem; margin-bottom: 5rem;" class="general-container">
   <h1>Welcome
     <%= @user.username %>
   </h1>
@@ -10,28 +11,49 @@
   </p>
   <p>Dogs:
     <% @dogs.each do |dog|  %>
-    <ul>
-      <li>Name:
+    <ul class="chatrooms-list">
+      <li>
+        Name:
         <%= dog.name %>
       </li>
-      <li>Breed:
+      <li>
+        Breed:
         <%= dog.breed %>
       </li>
-      <li>Age:
+      <li>
+        Age:
         <%= dog.age %>
       </li>
-      <li>Bio:
+      <li>
+        Bio:
         <%= dog.bio %>
+      </li>
+      <li>
+        <%= simple_form_for(dog) do |f| %>
+        <div class="custom-control custom-switch pl-3">
+          <%= f.input :ready_to_walk, input_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-input toggle' }, label_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-label'}, label: ' '  %>
+        </div>
+        <% end %>
+        <%= link_to 'Ready to walk', dog_toggle_ready_to_walk_path(dog),
+            method: :patch,
+            id: 'ready_to_walk',
+            class: 'btn btn-secondary-revert d-none',
+            remote: true %>
       </li>
     </ul>
     <% end %>
+    <%= render 'components/carousel_user_show' if @dogs.first.photos.attached? %>
   </p>
-  <ul>
+  <ul class="chatrooms-list">
     <li>
       <%= link_to "Edit your profile", edit_user_registration_path  %>
+    </li>
+     <li>
+    <%= link_to "Edit your dogs profile", edit_dog_path(@dogs.first) %>
     </li>
     <li>
       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
     </li>
   </ul>
 </div>
+<%= render 'shared/bottom-navbar' %>

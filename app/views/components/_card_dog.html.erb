@@ -1,17 +1,32 @@
-<div class="card-dog mb-2">
-  <%= image_tag "https://via.placeholder.com/343x204.png?text=dog.photo", alt: "dog photo" %>
+<div class="card-dog my-4 bg-white">
+  <div class="card-dog-user pt-2 mb-2">
+    <%= cl_image_tag dog.user.photo.key, class: "avatar" %>
+    <p>
+      <%= dog.user.username %>
+    </p>
+  </div>
+  <% if dog.photos.first %>
+  <div class="card-dog-photo-box mt-3" style="background-image: url(<%= cl_image_path dog.photos.first.key, :transformation=>[
+  {:height=>250, :gravity=>"auto", :crop=>"fill"}]%>)">
+  </div>
+  <% end %>
   <div class="card-dog-content d-flex justify-content-between pt-2 pb-2">
     <div class="card-dog-content-info ml-3">
-      <p class="medium"> <%= dog.name %></p>
-      <p>4 photos</p>
+      <p class="medium">
+        <%= dog.name %>
+      </p>
+      <p>
+        <%= dog.breed %>,
+        <%= dog.age %>
+      </p>
     </div>
     <div class="card-dog-content-tag d-flex align-items-end mr-3">
       <div class="status">
-        <p class="medium">ready to walk</p>
+        <% if dog.ready_to_walk %>
+          <p class="medium">ready to walk</p>
+        <% end %>
       </div>
     </div>
   </div>
   <%= link_to '', dog_path(dog), class: "stretched-link" %>
 </div>
-
-

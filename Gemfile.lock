@@ -117,6 +117,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    humanize (2.5.1)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -242,6 +243,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    unread (0.11.0)
+      activerecord (>= 3)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -282,6 +285,7 @@ DEPENDENCIES
   faker!
   font-awesome-sass
   geocoder
+  humanize
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
@@ -297,6 +301,7 @@ DEPENDENCIES
   spring
   turbolinks (~> 5)
   tzinfo-data
+  unread
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)

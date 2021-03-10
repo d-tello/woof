@@ -1,21 +1,17 @@
-
-<div style="margin-top: 5rem; margin-bottom: 5rem;" class="container">
- <h1 class="mb-4">Doggies near you - ready to play</h1>
-
+<%= render 'shared/navbar-top' %>
+<div style="margin-top: 5rem; margin-bottom: 5rem;" class="general-container">
+ <h1 class="mb-4 text-center">Doggies to play</h1>
   <% if current_user.dogs.empty? %>
-    <%= render 'shared/modal' %>
+  <%= render 'shared/modal' %>
   <% else %>
-    <div class="parks">
-      <% @parks.each do |park| %>
-      <div class="parks-park mb-4">
-        <h2>
-          <%= park.name %>
-        </h2>
-        <% park.dogs.each do |dog| %>
-          <%= render 'components/card_dog', dog: dog  if dog != current_user.dogs.first %>
-        <% end %>
-      </div>
-      <% end %>
-    </div>
+<%= render 'components/park_selector' %>
+  <div class="parks mb-4">
+    <h2><%= @viewed_park.name if @viewed_park %></h2>
+    <% @dogs.each do |dog| %>
+      <%= render 'components/card_dog', dog: dog unless current_user.dogs.include?(dog) %>
+    <% end %>
+  </div>
   <% end %>
-</div>
+  </div>
+<%= render 'shared/bottom-navbar' %>
+
