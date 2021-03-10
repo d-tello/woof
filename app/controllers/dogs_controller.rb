@@ -15,7 +15,9 @@ class DogsController < ApplicationController
   def create
     @dog = Dog.new(dog_params)
     @dog.user = current_user
-
+    park_id = params.require(:dog).permit(:park_ids)[:park_ids]
+    park = Park.find(park_id)
+    @dog.parks << park
     if @dog.save
       redirect_to user_path(current_user)
     else
