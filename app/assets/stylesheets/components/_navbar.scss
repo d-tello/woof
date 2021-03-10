@@ -1,6 +1,7 @@
-.navbar-top-bg {
+.navbar-top {
   background-color: $background-green;
-  border-bottom: 1px #D4DCD5 solid;
+  border-bottom: 1px solid $separator;
+  height: 60px;
 }
 
 .navbar-icons {
@@ -18,6 +19,7 @@
 .navbar-top-chatroom {
   background: $background-green;
   border-bottom: 1px solid $separator;
+  height: 60px;
 }
 
 .red-dot {

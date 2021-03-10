@@ -1,9 +1,9 @@
-<nav class="navbar fixed-top navbar-dark navbar-top-bg">
-  <%= link_to :back do %>
-  <i style="font-size: 30px" class="fa fa-angle-left" aria-hidden="true"></i>
-  <% end %>
+<nav class="navbar fixed-top navbar-dark navbar-top">
   <div>
-    <h1 class="logo">
+    <%= link_to :back do %>
+    <i style="font-size: 30px" class="fa fa-angle-left" aria-hidden="true"></i>
+    <% end %>
+    <h1 style="display: inline; color: #FFA149;" class="logo ml-2">
       <%= @dog.name %>
     </h1>
   </div>
