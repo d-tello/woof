@@ -1,30 +1,32 @@
 <% if user_signed_in? %>
-<nav class="navbar-bottom fixed-bottom navbar-dark bg-white">
-  <div class="navbar-icons">
-    <%= link_to root_path do %>
-    <%= image_tag "icons8-dog-house-50#{'-filled' if current_page?(controller: 'pages', action: 'home')}.png", alt: "Home", size: "30x30" %>
-    <% end %>
-    <p>Home</p>
-  </div>
-  <div class="navbar-icons">
-    <%= link_to discover_path do %>
-    <%= image_tag "icons8-dog-bone-50#{'-filled' if current_page?(controller: 'dogs', action: 'discover')}.png", alt: "Bone", size: "30x30" %>
-    <% end %>
-    <p>Discover</p>
-  </div>
-  <div class="navbar-icons">
-    <%= image_tag "icons8-qr-code-64.png", alt: "Show your QR Code", size: "30x30" %>
-    <p>QR Code</p>
-  </div>
-  <div class="navbar-icons">
-    <%= link_to user_path(current_user) do %>
-    <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key, class: "avatar-medium" %>
-    <% else %>
-    <%= image_tag "user-icon-placeholder", class: "avatar-medium"%>
-    <% end %>
-    <% end %>
-    <% end %>
-    <p>Profile</p>
-  </div>
-</nav>
+  <nav class="navbar-bottom fixed-bottom navbar-dark bg-white">
+    <div class="navbar-icons">
+      <%= link_to root_path do %>
+        <%= image_tag "icons8-dog-house-50#{'-filled' if current_page?(controller: 'pages', action: 'home')}.png", alt: "Home", size: "30x30" %>
+      <% end %>
+      <p>Home</p>
+    </div>
+    <div class="navbar-icons">
+      <%= link_to discover_path do %>
+        <%= image_tag "icons8-dog-bone-50#{'-filled' if current_page?(controller: 'dogs', action: 'discover')}.png", alt: "Bone", size: "30x30" %>
+      <% end %>
+      <p>Discover</p>
+    </div>
+    <div class="navbar-icons">
+      <%= link_to parks_path do %>
+        <%= image_tag "icons8-country-50#{'-filled' if current_page?(controller: 'parks', action: 'index')}.png", alt: "Map", size: "30x30" %>
+      <% end %>
+      <p>Parks</p>
+    </div>
+    <div class="navbar-icons">
+      <%= link_to user_path(current_user) do %>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-medium" %>
+        <% else %>
+          <%= image_tag "user-icon-placeholder", class: "avatar-medium"%>
+        <% end %>
+      <% end %>
+      <p>Profile</p>
+    </div>
+  </nav>
+<% end %>
