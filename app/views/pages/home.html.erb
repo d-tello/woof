@@ -5,10 +5,12 @@
   <%= render 'shared/modal' %>
   <% else %>
   <% if @dog %>
-    <%= simple_form_for(@dog, remote: true) do |f| %>
-      <%= f.association :viewed_park, include_blank: false, label: false %>
-      <%= f.submit class: "d-none", id: "dog-submit-button" %>
-    <% end %>
+    <div class="dropdown">
+      <%= simple_form_for(@dog, remote: true, html: {class: "park-dropdown"}) do |f| %>
+        <%= f.association :viewed_park, include_blank: false, label: false %>
+        <%= f.submit class: "d-none", id: "dog-submit-button" %>
+      <% end %>
+    </div>
   <% end %>
   <div class="parks mb-4">
     <h2><%= @viewed_park.name if @viewed_park %></h2>

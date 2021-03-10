@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+body {
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+.dropdown {
+  width: 90%;
+  margin: 0 auto;
+  .park-dropdown {
+    select {
+      border-radius: 40px;
+    }
+  }
+}
