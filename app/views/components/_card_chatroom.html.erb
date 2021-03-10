@@ -10,7 +10,9 @@
       <%= @dog[index].name %>
     </div>
     <div class="card-chatroom-content-last-message">
-      <%= chatroom.messages.last.content.truncate(20) %>
+      <% if chatroom.messages.last %>
+        <%= chatroom.messages.last.content.truncate(20) %>
+      <% end %>
     </div>
   </div>
   <%= link_to '', chatroom_path(chatroom), class: "stretched-link" %>
