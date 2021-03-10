@@ -23,6 +23,9 @@
 .red-dot {
   background: $danger;
   border-radius: 50%;
+  bottom: -5px;
   height: 5px;
+  left: 15px;
+  position: relative;
   width: 5px;
 }
