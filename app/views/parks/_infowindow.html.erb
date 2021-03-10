@@ -1,2 +1,6 @@
-<h2><%= park.name %></h2>
-<p><%= park.address %></p>
+<%= link_to root_path(park: park) do  %>
+        <h2><%= park.name %></h2>
+          <% end %>
+<p>
+  <%= image_tag("dog_icon.png", size: "30x30", style: "margin-bottom: 20px", :alt => "little doggie") %> &nbsp;&nbsp; playing here:&nbsp;&nbsp;&nbsp;&nbsp;<%= park.dogs.count %>
+</p>

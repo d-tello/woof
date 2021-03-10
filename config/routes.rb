@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :sniffs, only: %i[create]
   end
 
+  resources :dogs, only: :edit
+  resources :users, only: :show
+
   patch 'dogs/:id/toggle_ready_to_walk', to: 'dogs#toggle_ready_to_walk', as: 'dog_toggle_ready_to_walk'
 
   resources :dogs_park, only: %i[show new create]
