@@ -9,14 +9,12 @@ class User < ApplicationRecord
   has_many :dogs, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
 
-  after_create :generate_code
-
-  def generate_code
-    self.code = SecureRandom.hex
-    save
-  end
-
+  # before_create :generate_code
 
   acts_as_reader
 
+  # def generate_code
+  #   self.code = SecureRandom.hex
+  #   save
+  # end
 end
