@@ -16,12 +16,16 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @chatroom = Chatroom.find(params[:id])
-    @message = Message.new
-    if current_user.dogs.include?(@chatroom.sniff.sniffed)
-      @dog_to_message = @chatroom.sniff.sniffer
+    if (Chatroom.find_by_id params[:id]).nil?
+      redirect_to chatrooms_path
     else
-      @dog_to_message = @chatroom.sniff.sniffed
+      @chatroom = Chatroom.find(params[:id])
+      @message = Message.new
+      if current_user.dogs.include?(@chatroom.sniff.sniffed)
+        @dog_to_message = @chatroom.sniff.sniffer
+      else
+        @dog_to_message = @chatroom.sniff.sniffed
+      end
     end
   end
 end
