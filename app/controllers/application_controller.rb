@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :get_unread_sniffs
 
   def default_url_options
-  { host: ENV["www.woof.network"] || "localhost:3000" }
+  { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
   def configure_permitted_parameters
