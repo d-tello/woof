@@ -13,7 +13,11 @@ class SniffsController < ApplicationController
     @sniff.sniffer = current_user.dogs.first
     @sniff.sniffed = @dog
     if @sniff.save
-      redirect_to dog_path(@dog)
+      if params[:referrer] == "discover"
+        redirect_to discover_path
+      else
+        redirect_to dog_path(@dog)
+      end
     else
       render 'dogs/show'
     end
