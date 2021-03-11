@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = current_user
     @dogs = @user.dogs.order('name')
 
-    @qrcode = RQRCode::QRCode.new("users_url")
+    @qrcode = RQRCode::QRCode.new("www.woof.network/dogs/#{@dogs.first.id}")
 
     @svg = @qrcode.as_svg(
       offset: 0,
