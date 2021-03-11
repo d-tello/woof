@@ -7,7 +7,10 @@
   <%= f.input :age %>
   <%= f.association :parks, required: true, input_html: { multiple: false }, prompt: "Select a park" %>
   <%= f.input :bio %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true }, required: true %>
-  <%= f.submit %>
+  <div class="upload-btn-wrapper">
+    <button class="btn btn-secondary ">Now upload some photos</button>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, required: true %>
+  </div>
+  <%= f.button :submit, "Done!", class: "btn btn-secondary mb-3" %>
   <% end %>
 </div>
