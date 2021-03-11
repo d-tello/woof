@@ -1,6 +1,13 @@
-.navbar-top-bg {
+.navbar-top {
   background-color: $background-green;
   border-bottom: 1px #D4DCD5 solid;
+  height: 62px;
+}
+
+.navbar-top-bg {
+  background-color: $background-green;
+  border-bottom: 1px solid $separator;
+  height: 60px;
 }
 
 .navbar-icons {
@@ -15,10 +22,22 @@
   }
 }
 
+.navbar-top-dog-profile-left .logo {
+    margin-left: 10px;
+}
+
 .navbar-top-chatroom {
   background: $background-green;
   border-bottom: 1px solid $separator;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+
+  .navbar-top-chatroom-center {
+    margin-left: 55px;
+  }
 }
+
 
 .red-dot {
   background: $danger;

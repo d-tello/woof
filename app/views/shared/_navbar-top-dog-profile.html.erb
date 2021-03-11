@@ -1,13 +1,13 @@
-<nav class="navbar fixed-top navbar-dark navbar-top-bg">
-  <%= link_to :back do %>
-  <i style="font-size: 30px" class="fa fa-angle-left" aria-hidden="true"></i>
-  <% end %>
-  <div>
-    <h1 class="logo">
-      <%= @dog.name %>
-    </h1>
+<nav class="navbar-top-dog-profile navbar fixed-top navbar-dark navbar-top d-flex">
+  <div class="navbar-top-dog-profile-left d-flex align-items-center">
+    <i style="font-size: 30px" class="fa fa-angle-left" aria-hidden="true" onclick="history.back(-1)"></i>
+    <div class="navbar-top-dog-profile-left-logo">
+      <h1 class="logo">
+        <%= @dog.name %>
+      </h1>
+    </div>
   </div>
-  <div>
+  <div class="navbar-top-dog-profile-right d-flex">
     <%= link_to sniffs_path do %>
     <%= image_tag "icons8-dog-heart-64.png", alt: "Dog heart", size: "30x30", class: "mr-2" %>
     <% end %>

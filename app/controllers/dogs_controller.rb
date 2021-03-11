@@ -26,6 +26,9 @@ class DogsController < ApplicationController
     end
   end
 
+  def edit
+    @dog = Dog.find(params[:id])
+  end
 
   def update
     @dog = Dog.find(params[:id])

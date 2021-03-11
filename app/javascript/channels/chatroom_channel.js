@@ -10,9 +10,11 @@ const insertIntoDOM = (messageHTML, currentUserId, messages) => {
   // if the message is from the sender,
   if (message.dataset.senderId === currentUserId) {
     // add the sender CSS
+    message.firstChild.classList.remove('receiver');
     message.firstChild.classList.add('sender');
   } else {
     // Else, add the receiver css
+    message.firstChild.classList.remove('sender');
     message.firstChild.classList.add('receiver');
   }
 
@@ -29,8 +31,8 @@ const initChatroomChannel = () => {
 
     consumer.subscriptions.create({ channel: "ChatroomChannel", id: chatroomId }, {
       received(messageHTML) {
-        // console.log(messageHTML); // called when messageHTML is broadcast in the cable
         insertIntoDOM(messageHTML, currentUserId, messages);
+        window.scrollTo(0,document.body.scrollHeight);
       },
     });
   }
