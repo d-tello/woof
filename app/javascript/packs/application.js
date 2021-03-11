@@ -33,7 +33,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { changeDogPark } from '../components/change_dog_park.js'
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-
+import { sendMessageWithEnter } from '../components/chatroom_submit';
 
 document.addEventListener('turbolinks:load', () => {
  initChatroomChannel()
@@ -42,12 +42,9 @@ document.addEventListener('turbolinks:load', () => {
   $(".alert" ).fadeOut(3000);
   hideAlert();
   toggleActivatesHiddenButton();
-
   initMapbox();
-
   changeDogPark();
-
   initUpdateNavbarOnScroll();
-
+  sendMessageWithEnter();
 });
 
