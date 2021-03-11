@@ -5,9 +5,9 @@
   <%= f.input :name %>
   <%= f.input :breed %>
   <%= f.input :age %>
-  <%= f.association :parks, as: :radio_buttons, required: true %>
+  <%= f.association :parks, required: true, input_html: { multiple: false }, prompt: "Select a park" %>
   <%= f.input :bio %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true }, required: true %>
   <%= f.submit %>
   <% end %>
 </div>
