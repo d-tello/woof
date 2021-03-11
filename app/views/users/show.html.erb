@@ -18,8 +18,24 @@
         <%= @user.username %>
       </div>
       <hr>
+      <div class="dogs_container_on_user">
 
-
+        <% @dogs.each do |dog|  %>
+        <ul class="chatrooms-list_show">
+          <li>
+            <div class="dog_name_on_user_show">
+            My buddy:<br>
+            <%= dog.name %>
+            </div>
+          </li>
+          <li>
+             <div class="dog_breed_on_user_show">
+            is a:<br>
+            <%= dog.breed %>
+            </div>
+          </li>
+        <% end %>
+</div>
     <div id="ready_to_walk_container">
         <% @dogs.each do |dog|  %>
         <ul class="chatrooms-list_show">
