@@ -1,13 +1,15 @@
+<%= render 'shared/navbar-top' %>
 <div style="margin-top: 5rem;" class="container">
-
-<h1>Edit <%= @dog.name %> profile</h1>
-
+<h1>Edit <%= @dog.name %>´s profile</h1>
+<div class="around-the-form-edit">
   <%= simple_form_for @dog do |f| %>
   <%= f.input :name %>
   <%= f.input :breed %>
   <%= f.input :age %>
   <%= f.input :bio %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit "Update" %>
+  <%= f.submit "Update", class: "btn btn-secondary my-4" %>
   <% end %>
 </div>
+</div>
+<%= render 'shared/bottom-navbar' %>
