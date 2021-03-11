@@ -1,18 +1,18 @@
 .form_around_container {
-  margin-top:5rem;
   padding: 20px 20px 20px 20px;
 }
 .footer_links {
-  margin-top:20px;
-}
-
-.form-actions {
-  margin-left:-10px;
-  border: 1px solid red;
+text-align: center;
+color: #F76360;
+font-weight: bold;
 }
 
 .form-actions input {
-  background-color: #1EDD88;
+  background-color: #55BF80;
   border-radius: 8px;
 }
 
+#cancel {
+  background-color: #F76360 !important;
+
+}
