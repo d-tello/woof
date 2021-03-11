@@ -7,7 +7,7 @@
       </h2>
          <div class="qrcode">
                 <%= @svg.html_safe  %>
-              </div>
+          </div>
       <hr>
        </div>
       <div class="show_email">Email:<br>
@@ -59,6 +59,7 @@
             </li>
             <% end %>
         </ul>
+
       </div>
   </div>
     <%= render 'components/carousel_user_show' if @dogs.first.photos.attached? %>

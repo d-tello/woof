@@ -1,5 +1,5 @@
 <%= render 'shared/navbar-top' %>
-<div style="margin-top: 5rem;" class="general-container">
+<div style="margin-top: 5rem; margin-bottom: 3rem;" class="general-container">
 
 <h1>Edit your profile</h1>
 <div class="form_around_container">
@@ -13,7 +13,10 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
     <%= f.input :username, required: true, autofocus: true %>
+    <div class="upload-btn-wrapper">
+  <button class="btn btn-secondary ">Upload a photo</button>
     <%= f.input :photo, as: :file %>
+  </div>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -31,7 +34,7 @@
     </div>
 <% end %>
     <div class="footer_links">
-        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary my-3", id: "cancel" %></p>
+        <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-secondary my-3", id: "cancel" %></p>
         <br>
         <!--%= link_to "Back", :back, class: "btn btn-secondary my-3" %-->
     </div>

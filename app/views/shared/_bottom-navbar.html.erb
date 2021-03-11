@@ -23,7 +23,7 @@
         <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key, class: "avatar-medium" %>
         <% else %>
-          <%= image_tag "user-icon-placeholder", class: "avatar-medium"%>
+          <%= image_tag "user-icon-placeholder.png", class: "avatar-medium"%>
         <% end %>
       <% end %>
       <p>Profile</p>
