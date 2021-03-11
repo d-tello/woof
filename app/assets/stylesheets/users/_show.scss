@@ -9,14 +9,14 @@
   }
 }
 .around_qr_code {
-  font-size:14px;
+  font-size:16px !important;
 }
 .show_username {
   background-color: white;
   padding: 10px 40px 10px 15px;
   margin:  0px 15px 20px 15px;
   border-radius: 16px;
-  color: pink !important;  }
+ }
 
 .show_email {
   background-color: white;
@@ -58,8 +58,9 @@
   border-radius: 16px;
 }
 .lighter_font_on_user_show  {
-  color: pink !important;
+  color: #747474!important;
   font-size:11px !important;
 }
-
-
+#dog_park_ids {
+  border-radius:10px !important;
+}

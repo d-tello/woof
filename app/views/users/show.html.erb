@@ -8,31 +8,27 @@
          <div class="qrcode">
             <%= @svg.html_safe  %>
          </div>
-         hallo wie gehts?
       <hr>
     </div>
       <div class="show_email"><span class="lighter_font_on_user_show">Email:</span><br>
         <%= @user.email %>
       </div>
-      <div class="show_username"><h3 class="lighter_font_on_user_show">User:</h3><br>
+      <div class="show_username"><span class="lighter_font_on_user_show">Username:</span><br>
         <%= @user.username %>
       </div>
-
-<h3 class="lighter_font_on_user_show">Username:</h3>
-
       <hr>
       <div class="dogs_container_on_user">
         <% @dogs.each do |dog|  %>
         <ul class="chatrooms-list_show">
           <li>
             <div class="dog_name_on_user_show">
-              <span>My buddy:</span><br>
+              <span class="lighter_font_on_user_show">My buddy:</span><br>
               <%= dog.name %>
             </div>
           </li>
           <li>
              <div class="dog_breed_on_user_show">
-              <span>is a:</span><br>
+              <span class="lighter_font_on_user_show">is a:</span><br>
             <%= dog.breed %>
             </div>
           </li>
