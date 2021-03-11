@@ -3,7 +3,7 @@ const initUpdateNavbarOnScroll = () => {
   const header = document.querySelector("#header-home")
   const logo = document.querySelector("#logo")
 
-  if (navbar && header && logoBefore && logoAfter) {
+  if (navbar && header && logo) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 50) {
         logo.innerText = "Dogs near you"
