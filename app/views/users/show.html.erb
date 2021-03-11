@@ -60,10 +60,12 @@
         <div class="carousel-item active">
           <%= cl_image_tag @dogs.first.photos.last.key, class: "d-block w-100"  %>
         </div>
-        <% @dogs.first.photos.each do |photo| %>
-        <div class="carousel-item">
-          <%= cl_image_tag photo.key, class: "d-block w-100"  %>
-        </div>
+        <% if @dogs.first.photos %>
+          <% @dogs.first.photos.each do |photo| %>
+          <div class="carousel-item">
+            <%= cl_image_tag photo.key, class: "d-block w-100"  %>
+          </div>
+          <% end %>
         <% end %>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
