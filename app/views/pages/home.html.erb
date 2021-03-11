@@ -2,15 +2,15 @@
 <div style="margin-top: 5rem; margin-bottom: 5rem;" class="general-container">
  <h1 id="header-home" class="mb-4">Dogs near you</h1>
   <% if current_user.dogs.empty? %>
-  <%= render 'shared/modal' %>
+    <%= render 'shared/modal' %>
   <% else %>
-<%= render 'components/park_selector' %>
-  <div class="parks mb-4">
-    <% @dogs.each do |dog| %>
-      <%= render 'components/card_dog', dog: dog unless current_user.dogs.include?(dog) %>
-    <% end %>
-  </div>
+    <%= render 'components/park_selector' %>
+    <div class="parks mb-4">
+      <% @dogs.each do |dog| %>
+        <%= render 'components/card_dog', dog: dog unless current_user.dogs.include?(dog) %>
+      <% end %>
+    </div>
   <% end %>
-  </div>
+</div>
 <%= render 'shared/bottom-navbar' %>
 

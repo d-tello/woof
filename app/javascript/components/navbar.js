@@ -4,7 +4,7 @@ const initUpdateNavbarOnScroll = () => {
   const logoBefore = document.querySelector("#logo-before")
   const logoAfter = document.querySelector("#logo-after")
 
-  if (navbar) {
+  if (navbar && header && logoBefore && logoAfter) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 35) {
         header.classList.remove('toggle-opacity-in');
