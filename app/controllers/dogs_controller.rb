@@ -18,6 +18,7 @@ class DogsController < ApplicationController
     park_id = params.require(:dog).permit(:park_ids)[:park_ids]
     park = Park.find(park_id)
     @dog.parks << park
+    @dog.viewed_park = park
     if @dog.save
       redirect_to user_path(current_user)
     else
@@ -32,7 +33,12 @@ class DogsController < ApplicationController
   def update
     @dog = Dog.find(params[:id])
     if @dog.update(dog_params)
-      redirect_to root_path
+      # if request comes from user page, redirect to user show page, otherwise to home
+      if params[:dog][:park_ids]
+        redirect_to users_path
+      else
+        redirect_to root_path
+      end
     else
       render 'pages/home'
     end
@@ -51,6 +57,6 @@ class DogsController < ApplicationController
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :breed, :age, :bio, :viewed_park_id, photos: [])
+    params.require(:dog).permit(:name, :breed, :age, :bio, :viewed_park_id, :park_ids, photos: [])
   end
 end
