@@ -2,6 +2,10 @@
   color: $text-secondary;
 }
 
+#messages {
+  margin-bottom: 90px;
+}
+
 .message-container p {
   padding: 16px;
   border-radius: 16px;
@@ -18,26 +22,14 @@
   justify-content: flex-end;
 }
 
-
 .receiver p {
   background: white;
+  margin-right: 45px;
 }
 
 .sender p {
   background: #E8E5E5;
-}
-
-.chatroom-footer {
-  position: sticky;
-  width: auto;
-  background: $background-green;
-  padding: 20px 0;
-}
-
-.chatroom-submit-send {
-  color: $primary;
-  background: none;
-  border: none;
+  margin-left: 45px;
 }
 
 #new_message {
@@ -58,4 +50,15 @@
     height: 44px;
     padding-top: 10px;
   }
+}
+
+.chatroom-footer {
+  background: $background-green;
+  padding: 20px 15px;
+}
+
+.chatroom-submit-send {
+  color: $primary;
+  background: none;
+  border: none;
 }
