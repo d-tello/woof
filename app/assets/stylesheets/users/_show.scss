@@ -1,11 +1,50 @@
 
 .around_qr_code {
-  display: flex;
-  justify-content: space-between;
+
 }
 
 .qrcode {
- padding-top: 15px;
- padding-right: 35px;
+
 }
 
+.qr_codecontainer_one {
+  h2 {
+    font-size: 16px;
+    color: #55BF80;
+    text-align: center;
+    font-family: $font-family-sans-serif;
+    font-weight: 600;
+  }
+}
+.show_username {
+  background-color: white;
+  padding: 10px 40px 10px 15px;
+  margin:  0px 15px 20px 15px;
+  border-radius: 16px;
+}
+.show_email {
+  background-color: white;
+  padding: 10px 40px 10px 15px;
+  margin: 20px 15px 10px 15px;
+  border-radius: 16px;
+}
+.ready_to_walk_container {
+    text-align:center !important;
+}
+.chatrooms-list_show {
+  margin-left:-35px;
+}
+.chatrooms-list_show ul {
+  text-align:center;
+}
+.chatrooms-list_show li {
+  list-style-type: none !important;
+}
+.form-check {
+    display: block;
+    padding-left: 8.25rem !important;
+}
+.bottom-links-container {
+ text-align:center;
+ margin-left:-30px !important;
+}

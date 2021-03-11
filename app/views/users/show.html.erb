@@ -2,34 +2,27 @@
 <div style="margin: 5rem 0px;" class="container">
   <div class="around_qr_code">
     <div class="qr_codecontainer_one">
-      <h1>Welcome
+      <h2>Hello
         <%= @user.username %>
-      </h1>
-      <p>Email:
+      </h2>
+         <div class="qrcode">
+                <%= @svg.html_safe  %>
+              </div>
+      <hr>
+       </div>
+      <div class="show_email">Email:<br>
         <%= @user.email %>
-      </p>
-      <p>Username:
+      </div>
+
+      <div class="show_username">Username:<br>
         <%= @user.username %>
-      </p>
-      <p>Dogs:
+      </div>
+      <hr>
+
+
+    <div id="ready_to_walk_container">
         <% @dogs.each do |dog|  %>
-        <ul class="chatrooms-list">
-          <li>
-            Name:-
-            <%= dog.name %>
-          </li>
-          <li>
-            Breed:
-            <%= dog.breed %>
-          </li>
-          <li>
-            Age:
-            <%= dog.age %>
-          </li>
-          <li>
-            Bio:
-            <%= dog.bio %>
-          </li>
+        <ul class="chatrooms-list_show">
           <li>
             <%= simple_form_for(dog) do |f| %>
               <div class="custom-control custom-switch pl-3">
@@ -50,30 +43,19 @@
             </li>
             <% end %>
         </ul>
-    </div>
-    <div class="qrcode">
-      <%= @svg.html_safe  %>
-    </div>
+      </div>
   </div>
-
-
-
-
-
-
-
     <%= render 'components/carousel_user_show' if @dogs.first.photos.attached? %>
-
-  </p>
-  <ul class="chatrooms-list">
+  <div class="bottom-links-container"> </div>
+  <ul class="chatrooms-list_show">
     <li>
-      <%= link_to "Edit your profile", edit_user_registration_path  %>
+      <%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-secondary my-3"  %>
     </li>
      <li>
-    <%= link_to "Edit your dogs profile", edit_dog_path(@dogs.first) %>
+    <%= link_to "Edit your dogs profile", edit_dog_path(@dogs.first), class: "btn btn-secondary my-3" %>
     </li>
     <li>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-secondary-revert mb-3", id: "logout-btn" %>
     </li>
   </ul>
 </div>
