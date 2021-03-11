@@ -22,22 +22,22 @@
   }
 }
 
-.navbar-top-dog-profile-left {
-  i {
-    // margin-left: 10px;
-  }
-
-  .logo {
+.navbar-top-dog-profile-left .logo {
     margin-left: 10px;
-  }
 }
-
 
 .navbar-top-chatroom {
   background: $background-green;
   border-bottom: 1px solid $separator;
+  display: flex;
+  justify-content: space-between;
   height: 60px;
+
+  .navbar-top-chatroom-center {
+    margin-left: 55px;
+  }
 }
+
 
 .red-dot {
   background: $danger;
