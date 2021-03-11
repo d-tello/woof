@@ -1,26 +1,16 @@
 const initUpdateNavbarOnScroll = () => {
   const navbar = document.querySelector("#navbar")
   const header = document.querySelector("#header-home")
-  const logoBefore = document.querySelector("#logo-before")
-  const logoAfter = document.querySelector("#logo-after")
+  const logo = document.querySelector("#logo")
 
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= 35) {
-        header.classList.remove('toggle-opacity-in');
-        header.classList.add('toggle-opacity-out');
-        logoBefore.classList.add('toggle-opacity-out');
-        logoBefore.classList.remove('toggle-opacity-in');
-        logoAfter.classList.remove('toggle-opacity-out');
-        logoAfter.classList.add('toggle-opacity-in');
-        logoAfter.style.display = "block"
+      if (window.scrollY >= 50) {
+        logo.innerText = "Dogs near you"
+        header.style.visibility = "hidden"
       } else {
-        header.classList.add('toggle-opacity-in');
-        header.classList.remove('toggle-opacity-out');
-        logoBefore.classList.add('toggle-opacity-in');
-        logoBefore.classList.remove('toggle-opacity-out');
-        logoAfter.classList.add('toggle-opacity-out');
-        logoAfter.classList.remove('toggle-opacity-in');
+        logo.innerText = "Woof"
+        header.style.visibility = "visible"
       }
     });
   }
