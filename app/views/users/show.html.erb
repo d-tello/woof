@@ -6,55 +6,58 @@
         <%= @user.username %>
       </h2>
          <div class="qrcode">
-                <%= @svg.html_safe  %>
-          </div>
+            <%= @svg.html_safe  %>
+         </div>
+         hallo wie gehts?
       <hr>
-       </div>
-      <div class="show_email">Email:<br>
+    </div>
+      <div class="show_email"><span class="lighter_font_on_user_show">Email:</span><br>
         <%= @user.email %>
       </div>
-
-      <div class="show_username">Username:<br>
+      <div class="show_username"><h3 class="lighter_font_on_user_show">User:</h3><br>
         <%= @user.username %>
       </div>
+
+<h3 class="lighter_font_on_user_show">Username:</h3>
+
       <hr>
       <div class="dogs_container_on_user">
-
         <% @dogs.each do |dog|  %>
         <ul class="chatrooms-list_show">
           <li>
             <div class="dog_name_on_user_show">
-            My buddy:<br>
-            <%= dog.name %>
+              <span>My buddy:</span><br>
+              <%= dog.name %>
             </div>
           </li>
           <li>
              <div class="dog_breed_on_user_show">
-            is a:<br>
+              <span>is a:</span><br>
             <%= dog.breed %>
             </div>
           </li>
         <% end %>
-</div>
+      </div>
+      <hr>
     <div id="ready_to_walk_container">
         <% @dogs.each do |dog|  %>
         <ul class="chatrooms-list_show">
           <li>
             <%= simple_form_for(dog) do |f| %>
-              <div class="custom-control custom-switch pl-3">
-                <%= f.input :ready_to_walk, input_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-input toggle' }, label_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-label'}, label: ' '  %>
-              </div>
-            <% end %>
-            <%= link_to 'Ready to walk', dog_toggle_ready_to_walk_path(dog),
+            <div class="custom-control custom-switch pl-3">
+              <%= f.input :ready_to_walk, input_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-input toggle' }, label_html: { id: "ready_to_walk_#{dog.id}", class: 'custom-control-label'}, label: ' '  %>
+            </div>
+              <% end %>
+              <%= link_to 'Ready to walk', dog_toggle_ready_to_walk_path(dog),
                 method: :patch,
                 id: 'ready_to_walk',
                 class: 'btn btn-secondary-revert d-none',
                 remote: true %>
-            </li>
-            <li>
+          </li>
+          <li>
               <%= simple_form_for(dog, remote: true, html: {class: "park-dropdown"}) do |f| %>
-                <%= f.association :parks, include_blank: false, label: "Change your dog's park", input_html: { multiple: false } %>
-                <%= f.submit class: "d-none", id: "dog-submit-button" %>
+              <%= f.association :parks, include_blank: false, label: "Choose your dog's park", input_html: { multiple: false } %>
+              <%= f.submit class: "d-none", id: "dog-submit-button" %>
               <% end %>
             </li>
             <% end %>

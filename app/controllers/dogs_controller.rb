@@ -51,7 +51,6 @@ class DogsController < ApplicationController
   def toggle_ready_to_walk
     @dog = Dog.find(params[:id])
     @dog.toggle! :ready_to_walk
-    redirect_to user_path(current_user)
   end
 
   private
