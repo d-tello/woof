@@ -1,6 +1,6 @@
 <%= render 'shared/navbar-top' %>
 <div style="margin-top: 5rem;" class="general-container">
-  <h1 class="mb-4 text-center">Discover new buddies</h1>
+  <h1 class="mb-4 text-left">Discover new buddies</h1>
   <div class="card-dog my-4">
     <div class="card-dog-photo-box mt-3" style="background-image: url(<%= cl_image_path @dog.photos.first.key, :transformation=>[
   {:height=>250, :gravity=>"auto", :crop=>"fill"}]%>); border-top-right-radius: 15px; border-top-left-radius: 15px;">
@@ -18,14 +18,19 @@
       <div class="card-dog-content-tag d-flex align-items-end mr-3">
         <div class="status">
           <% if @dog.ready_to_walk %>
-          <p class="medium">ready to walk</p>
+            <p class="medium">ready to walk</p>
           <% end %>
         </div>
       </div>
-    </div>
-    <%= link_to '', dog_path(@dog), class: "stretched-link" %>
+    <%#= link_to '', dog_path(@dog), class: "stretched-link" %>
   </div>
-    <%= link_to 'Sniff', dog_sniffs_path(@dog), method: :post, id:'sniffer', class: "btn btn-secondary my-3" %>
-    <%= link_to 'See More', discover_path, class: "btn btn-secondary-revert mb-3" %>
+  <div class="button_group_discover">
+    <div class="button_group_discover_one">
+    <%= link_to 'Sniff', dog_sniffs_path(@dog, referrer:"discover"), method: :post, id:'sniffer', class: "btn btn-secondary my-3" %>
+    </div>
+    <div class="button_group_discover_two">
+    <%= link_to 'Bark', discover_path, class: "btn btn-secondary-revert mb-3", id: "woof" %>
+    </div>
+  </div>
 </div>
 <%= render 'shared/bottom-navbar' %>

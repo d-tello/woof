@@ -4,7 +4,12 @@
 }
 .mapboxgl-control-container {
   display: none;
-
+}
+.mapboxgl-popup-content p {
+  font-size: 24px;
+  font-family: $body-font;
 }
 
-
+.mapboxgl-popup-content a:hover {
+  text-decoration: none;
+}
