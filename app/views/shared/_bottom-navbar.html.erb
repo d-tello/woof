@@ -2,19 +2,19 @@
   <nav class="navbar-bottom fixed-bottom navbar-dark bg-white">
     <div class="navbar-icons">
       <%= link_to root_path do %>
-        <%= image_tag "icons8-dog-house-50#{'-filled' if current_page?(controller: 'pages', action: 'home')}.png", alt: "Home", size: "30x30" %>
+        <%= image_tag "icons8-dog-house-50#{'-filled' if current_page?(root_path)}.png", alt: "Home", size: "30x30" %>
       <% end %>
       <p>Home</p>
     </div>
     <div class="navbar-icons">
       <%= link_to discover_path do %>
-        <%= image_tag "icons8-dog-bone-50#{'-filled' if current_page?(controller: 'dogs', action: 'discover')}.png", alt: "Bone", size: "30x30" %>
+        <%= image_tag "icons8-dog-bone-50#{'-filled' if current_page?(discover_path)}.png", alt: "Bone", size: "30x30" %>
       <% end %>
       <p>Discover</p>
     </div>
     <div class="navbar-icons">
       <%= link_to parks_path do %>
-        <%= image_tag "icons8-country-50#{'-filled' if current_page?(controller: 'parks', action: 'index')}.png", alt: "Map", size: "30x30" %>
+        <%= image_tag "icons8-country-50#{'-filled' if current_page?(parks_path)}.png", alt: "Map", size: "30x30" %>
       <% end %>
       <p>Parks</p>
     </div>
