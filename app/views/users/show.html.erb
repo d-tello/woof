@@ -18,7 +18,7 @@
   <hr>
   <div class="dogs_container_on_user">
     <% @dogs.each do |dog|  %>
-      <ul class="chatrooms-list_show">
+      <ul class="user_page_show_list">
         <li>
           <div class="dog_name_on_user_show">
             <span class="lighter_font_on_user_show">My buddy:</span><br>
@@ -34,7 +34,7 @@
       </ul>
       <hr>
       <div id="ready_to_walk_container">
-        <ul class="chatrooms-list_show">
+        <ul class="user_page_show_list">
           <li>
             <%= simple_form_for(dog) do |f| %>
               <div class="custom-control custom-switch pl-3">
@@ -58,7 +58,7 @@
     <% end %>
   </div>
   <%= render 'components/carousel_user_show' if @dogs.first.photos.attached? %>
-  <ul class="chatrooms-list_show">
+  <ul class="user_page_show_list">
     <li>
       <%= link_to "Edit your profile", edit_user_registration_path, class: "btn btn-secondary my-3"  %>
     </li>
