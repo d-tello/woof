@@ -4,13 +4,36 @@ body {
   margin-right: -1px;
 }
 
+.park-selector {
+  background-color: white;
+  border-radius: 16px;
+  padding: 4px 7px 4px 12px;
+}
+
 .dropdown {
   width: 90%;
   margin: 0 auto;
   .park-dropdown {
+    .form-group {
+      margin-bottom: 0;
+    }
+
     select {
-      border-radius: 40px;
+      border: none;
       appearance: none;
+      color: $body-color !important;
+      font-weight: 500;
     }
   }
 }
+
+// .dropdown {
+//   width: 90%;
+//   margin: 0 auto;
+//   .park-dropdown {
+//     select {
+//       border-radius: 40px;
+//       appearance: none;
+//     }
+//   }
+// }
