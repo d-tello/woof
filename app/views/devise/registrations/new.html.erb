@@ -1,3 +1,4 @@
+<div class="sign_up_container_around">
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -11,7 +12,10 @@
    <%= f.input :username,
                 required: true,
                 input_html: { autocomplete: "username" } %>
+  <div class="upload-btn-wrapper">
+  <button class="btn btn-secondary ">Upload photos</button>
     <%= f.input :photo, as: :file %>
+  </div>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -22,8 +26,9 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-secondary mb-3", id: "sign_up_user_page" %>
   </div>
 <% end %>
-
 <%= render "devise/shared/links" %>
+</div>
+
