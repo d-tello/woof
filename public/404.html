@@ -4,12 +4,14 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
+  .woof_error_page {
     background-color: #EFEFEF;
-    color: #2E2F30;
+    color: #1EDD88;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
+    font-size: 20px;
+    font-weight: 400;
   }
 
   .rails-default-error-page div.dialog {
@@ -18,12 +20,12 @@
     margin: 4em auto 0;
   }
 
-  .rails-default-error-page div.dialog > div {
+  .woof_error_page div.dialog > div {
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+    border-top: #F76360 solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -31,37 +33,39 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
+  .woof_error_page h1 {
+    font-size: 26px;
+    color: #F76360;
     line-height: 1.5em;
   }
 
-  .rails-default-error-page div.dialog > p {
+  .woof_error_page div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
     background-color: #F7F7F7;
-    border: 1px solid #CCC;
+   /* border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #999;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
+    border-top-color: #DADADA;*/
+    color: #55BF80;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class="woof_error_page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
+
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
+      <h1>404 <br> Sorry - The page you were looking for doesn't exist.</h1>
+      <p>Sure - everything went the right way?</p>
+
     <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  <p>WOOF!</p>
+  <img src="http://www.woof.network/assets/dog-walking-52c98ad910855fe4819579ac9446e8f1d48b0a05dc4313baafd4788fef427a90.svg" alt="Cute puppy" width="300" height="400">
+    </div>
 </body>
 </html>
