@@ -1,5 +1,5 @@
-meta_product_name: "Product Name"
-meta_title: "Product name - Product tagline"
-meta_description: "Relevant description"
+meta_product_name: "Woof"
+meta_title: "Woof - the app for your best friend"
+meta_description: "Woof is the app completely dedicated to your four-legged friend that allows you to find new friends for him in your neighborhood in a simple way"
 meta_image: "cover.png" # should exist in `app/assets/images/`
-twitter_account: "@product_twitter_account"   # required for Twitter Cards
+twitter_account: "@woof_app"   # required for Twitter Cards
