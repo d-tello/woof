@@ -48,10 +48,18 @@
                 remote: true %>
           </li>
           <li>
-            <%= simple_form_for(dog, remote: true, html: {class: "park-dropdown"}) do |f| %>
-              <%= f.association :parks, include_blank: false, label: "Choose your dog's park", input_html: { multiple: false } %>
-              <%= f.submit class: "d-none", id: "dog-submit-button" %>
-            <% end %>
+            <p class="mb-1" style=" color: #747474;">
+              <%= "Change #{dog.name}'s home park" %>
+              </p>
+            <div class="park-selector d-flex align-items-center">
+              <%= image_tag "tree_icon_60.png", alt: "Park", size: "30x30" %>
+              <div class="dropdown ml-3">
+                <%= simple_form_for(dog, remote: true, html: {class: "park-dropdown"}) do |f| %>
+                  <%= f.association :parks, include_blank: false, label: false, input_html: { multiple: false } %>
+                  <%= f.submit class: "d-none", id: "dog-submit-button" %>
+                <% end %>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
