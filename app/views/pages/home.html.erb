@@ -1,6 +1,6 @@
 <%= render 'shared/navbar-top' %>
 <div style="margin-top: 5rem; margin-bottom: 5rem;" class="general-container">
- <h1 id="header-home" class="mb-4">Dogs near you</h1>
+ <h1 id="header-home" class="mb-4"><%= 'Dogs near you' unless current_user.dogs.empty? %></h1>
   <% if current_user.dogs.empty? %>
     <%= render 'shared/modal' %>
   <% else %>
