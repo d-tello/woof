@@ -1,6 +1,6 @@
 <%= render 'shared/navbar-top' %>
-<div style="margin-top: 5rem;" class="container">
-<h1>Edit <%= @dog.name %>´s profile</h1>
+<div style="margin-top: 5rem; margin-bottom: 5rem;" class="container">
+<h1>Edit <%= @dog.name %>'s profile</h1>
 <div class="around-the-form-edit">
   <%= simple_form_for @dog do |f| %>
   <%= f.input :name %>
@@ -13,6 +13,7 @@
   </div>
   <%= f.submit "Update", class: "btn btn-secondary mb-3" %>
   <% end %>
+  <%= link_to "Delete #{@dog.name}'s profile", dog_path(@dog),  method: :delete, class: "btn btn-secondary", id: "cancel" %>
 </div>
 </div>
 <%= render 'shared/bottom-navbar' %>
