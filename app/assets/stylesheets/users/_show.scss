@@ -1,5 +1,5 @@
 .qr_codecontainer_one {
-  font-size: 14px;
+  font-size:16px !important;
   h2 {
     font-size: 16px;
     color: #55BF80;
@@ -8,37 +8,30 @@
     font-weight: 600;
   }
 }
-.around_qr_code {
-  font-size:16px !important;
-}
+
 .show_username {
   background-color: white;
   padding: 10px 40px 10px 15px;
-  margin:  0px 15px 20px 15px;
+  margin:  0px 0px 20px 0px;
   border-radius: 16px;
  }
 
 .show_email {
   background-color: white;
   padding: 10px 40px 10px 15px;
-  margin: 20px 15px 10px 15px;
+  margin: 20px 0px 10px 0px;
   border-radius: 16px;
 }
-.ready_to_walk_container {
-    text-align:center !important;
-}
+
 .chatrooms-list_show {
-  margin-left:-35px;
-}
-.chatrooms-list_show ul {
-  text-align:center;
+  padding-left:0px;
 }
 .chatrooms-list_show li {
   list-style-type: none !important;
 }
 .form-check {
     display: block;
-    padding-left: 8.25rem !important;
+    padding-left: 1.25rem !important;
 }
 .bottom-links-container {
  text-align:center;
@@ -48,13 +41,13 @@
 .dog_name_on_user_show {
   background-color: white;
   padding: 10px 40px 10px 15px;
-  margin:  0px 15px 12px 12px;
+  margin:  0px 0px 12px 0px;
   border-radius: 16px;
 }
 .dog_breed_on_user_show {
   background-color: white;
   padding: 10px 40px 10px 15px;
-  margin: 10px 15px 10px 12px;
+  margin: 10px 0px 10px 0px;
   border-radius: 16px;
 }
 .lighter_font_on_user_show  {
