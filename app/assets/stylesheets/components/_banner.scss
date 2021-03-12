@@ -1,4 +1,10 @@
 .banner {
   height: 248px;
   background-size: cover;
+  position: relative;
+  .avatar-xlarge {
+  	position: absolute;
+  	right: 15px;
+    top: 265px;
+  }
 }

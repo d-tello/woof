@@ -2,7 +2,9 @@
   background-color: $secondary-light;
   color: $secondary;
   border-radius: 8px;
-
+  position: absolute;
+  right: 28%;
+  top: 128%;
   p {
     padding: 0 8px 0 8px;
     text-transform: uppercase;

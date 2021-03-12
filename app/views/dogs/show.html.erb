@@ -2,6 +2,12 @@
 <div style="margin-top: 62px; margin-bottom: 5rem;">
   <div class="dog-image banner">
     <%= render 'components/carousel_dog_show' %>
+    <%= cl_image_tag @dog.user.photo.key, class: "avatar-xlarge " %>
+    <div class="status">
+      <% if @dog.ready_to_walk %>
+        <p class="medium ">ready to walk</p>
+      <% end %>
+    </div>
   </div>
   <div class="general-container" style="margin-top: 65px;">
     <div class="dog-content">
@@ -9,11 +15,6 @@
         <h2 class="mb-0">
           <%= @dog.name %>
         </h2>
-        <div class="status">
-          <% if @dog.ready_to_walk %>
-            <p class="medium">ready to walk</p>
-          <% end %>
-        </div>
       </div>
       <div class="dog-content-body">
         <div class="dog-content-body-info">
@@ -46,4 +47,5 @@
       </div>
     </div>
   </div>
+  <%= render 'shared/bottom-navbar' %>
 </div>
