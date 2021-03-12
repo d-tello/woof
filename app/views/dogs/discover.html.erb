@@ -15,6 +15,7 @@
           <%= @dog.age %>
         </p>
       </div>
+      <%= link_to '', dog_path(@dog), class: "stretched-link" %>
       <div class="card-dog-content-tag d-flex align-items-end mr-3">
         <div class="status">
           <% if @dog.ready_to_walk %>
@@ -22,7 +23,6 @@
           <% end %>
         </div>
       </div>
-    <%= link_to '', dog_path(@dog), class: "stretched-link" %>
   </div>
   <div class="button_group_discover">
     <div class="button_group_discover_one">
