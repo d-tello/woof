@@ -33,6 +33,7 @@ gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'font-awesome-sass'
 gem 'geocoder'
+gem "serviceworker-rails"
 gem 'simple_form'
 gem 'unread'
 

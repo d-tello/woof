@@ -227,6 +227,8 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.1)
+    serviceworker-rails (0.6.0)
+      railties (>= 3.1)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -303,6 +305,7 @@ DEPENDENCIES
   rqrcode
   sass-rails (>= 6)
   selenium-webdriver
+  serviceworker-rails
   simple_form
   spring
   turbolinks (~> 5)
