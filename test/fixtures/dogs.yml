@@ -1,0 +1,17 @@
+luke:
+  name: "Luke"
+  breed: "Vizla"
+  age: 4
+  bio: "I like swimming"
+  ready_to_walk: true
+  user: dan
+  viewed_park: wildenbruchplatz
+
+grendel:
+  name: "Grendel"
+  breed: "Dachshund"
+  age: 1
+  bio: "I like sausages"
+  ready_to_walk: true
+  user: adrienne
+  viewed_park: wildenbruchplatz
