@@ -5,6 +5,10 @@ class TreesTest < ApplicationSystemTestCase
     login_as users(:dan)
     visit root_path
     save_and_open_screenshot
+    puts "puts output"
+    puts html
+    Rails::logger.debug "loggerdebug output"
+    Rails::logger.debug html
     assert_selector "p", text: "Grendel"
   end
 end
