@@ -15,8 +15,6 @@ class TreesTest < ApplicationSystemTestCase
   test "visit home page and see dog" do
     login_as users(:dan)
     visit root_path
-    puts "puts Output"
-    puts html
     assert_selector "p", text: "Grendel"
   end
 end
