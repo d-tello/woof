@@ -25,3 +25,8 @@ module Woof
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+# Workaround for Ruby interprerer error: https://github.com/sass/sassc-ruby/issues/197
+Rails.application.config.assets.configure do |env|
+  env.export_concurrent = false
+end
